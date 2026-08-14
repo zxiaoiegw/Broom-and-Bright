@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Serenity Massage & Spa"
+description = "A professional multi-page website for a local massage therapy business. Includes a homepage hero, services & pricing, therapist bios, a booking page with a placeholder embed container, and a contact/location page with a form. Frontend-only, no backend required."
+version = "1.0.0"
+id = "artifacts/serenity-spa"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18298
+
+[services.development]
+run = "pnpm --filter @workspace/serenity-spa run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/serenity-spa", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/serenity-spa/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18298"
+BASE_PATH = "/"
