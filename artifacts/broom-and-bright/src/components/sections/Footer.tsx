@@ -1,32 +1,42 @@
-import { Facebook, Instagram, Twitter } from 'lucide-react';
-import logoUrl from '@assets/logo_1786815264958.png';
-import { Link } from 'wouter';
+import { Facebook, Instagram, Twitter } from "lucide-react";
+import logoUrl from "@assets/logo_1786815264958.png";
+import { Link } from "wouter";
 
 export function Footer() {
   return (
     <footer className="bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
-          
           <div className="md:col-span-2">
             <Link href="/" className="mb-6 group inline-flex items-center">
               <img
                 src={logoUrl}
                 alt="Broom & Bright"
-                className="h-14 w-auto brightness-0 invert group-hover:opacity-80 transition-opacity"
+                className="h-16 w-auto brightness-0 invert group-hover:opacity-80 transition-opacity"
               />
             </Link>
             <p className="max-w-md text-slate-400 mb-6 leading-relaxed">
-              The cleaning service that earns a spare key. Professional, meticulous, and dedicated to making your home feel like a breath of fresh air.
+              The cleaning service that earns a spare key. Professional,
+              meticulous, and dedicated to making your home feel like a breath
+              of fresh air.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+              >
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+              >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+              >
                 <Twitter className="w-5 h-5" />
               </a>
             </div>
@@ -35,28 +45,72 @@ export function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-4">
-              <li><a href="#services" className="hover:text-primary transition-colors">Services</a></li>
-              <li><a href="#pricing" className="hover:text-primary transition-colors">Pricing</a></li>
-              <li><a href="#how-it-works" className="hover:text-primary transition-colors">How It Works</a></li>
-              <li><a href="#reviews" className="hover:text-primary transition-colors">Reviews</a></li>
-              <li><a href="#faq" className="hover:text-primary transition-colors">FAQ</a></li>
+              <li>
+                <a
+                  href="#services"
+                  className="hover:text-primary transition-colors"
+                >
+                  Services
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#pricing"
+                  className="hover:text-primary transition-colors"
+                >
+                  Pricing
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#how-it-works"
+                  className="hover:text-primary transition-colors"
+                >
+                  How It Works
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#reviews"
+                  className="hover:text-primary transition-colors"
+                >
+                  Reviews
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className="hover:text-primary transition-colors">
+                  FAQ
+                </a>
+              </li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-white font-semibold mb-6">Legal</h4>
             <ul className="space-y-4">
-              <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Cancellation Policy</a></li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-primary transition-colors">
+                  Cancellation Policy
+                </a>
+              </li>
             </ul>
           </div>
-          
         </div>
 
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Broom & Bright Cleaning. All rights reserved.
+            &copy; {new Date().getFullYear()} Broom & Bright Cleaning. All
+            rights reserved.
           </p>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
