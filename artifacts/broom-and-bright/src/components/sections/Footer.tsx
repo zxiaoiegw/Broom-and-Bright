@@ -1,4 +1,5 @@
-import { Sparkles, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Twitter } from 'lucide-react';
+import logoUrl from '@assets/Broom_logo_1786814397539.png';
 import { Link } from 'wouter';
 
 export function Footer() {
@@ -8,9 +9,12 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-white mb-6 group inline-flex">
-              <Sparkles className="h-6 w-6 text-primary group-hover:rotate-12 transition-transform" />
-              <span>Broom & Bright</span>
+            <Link href="/" className="mb-6 group inline-flex items-center">
+              <img
+                src={logoUrl}
+                alt="Broom & Bright"
+                className="h-10 w-auto brightness-0 invert group-hover:opacity-80 transition-opacity"
+              />
             </Link>
             <p className="max-w-md text-slate-400 mb-6 leading-relaxed">
               The cleaning service that earns a spare key. Professional, meticulous, and dedicated to making your home feel like a breath of fresh air.

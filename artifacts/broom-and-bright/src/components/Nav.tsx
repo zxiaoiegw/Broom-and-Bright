@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import logoUrl from '@assets/Broom_logo_1786814397539.png';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'wouter';
 
@@ -39,9 +40,12 @@ export function Nav() {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-slate-900 group">
-            <Sparkles className="h-6 w-6 text-primary group-hover:rotate-12 transition-transform" />
-            <span>Broom & Bright</span>
+          <Link href="/" className="flex items-center group">
+            <img
+              src={logoUrl}
+              alt="Broom & Bright"
+              className="h-10 md:h-12 w-auto group-hover:opacity-80 transition-opacity"
+            />
           </Link>
 
           {/* Desktop Nav */}
