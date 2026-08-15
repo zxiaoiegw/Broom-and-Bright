@@ -8,10 +8,32 @@ export function Hero() {
   const imageRef = useScrollReveal();
 
   return (
-    <section className="pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+    <section className="pt-24 pb-16 md:pt-40 md:pb-24 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          <div ref={contentRef} className="max-w-2xl">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
+          {/* Compact image banner — shows first on mobile, second on desktop */}
+          <div ref={imageRef} className="relative order-1 lg:order-2 mb-6 lg:mb-0">
+            <div className="absolute inset-0 bg-teal-100 rounded-3xl transform translate-x-3 translate-y-3 lg:translate-x-4 lg:translate-y-4 -z-10"></div>
+            <img
+              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400"
+              alt="Sparkling clean bright kitchen"
+              className="rounded-3xl shadow-xl w-full object-cover aspect-[16/9] lg:aspect-[4/3]"
+            />
+
+            {/* Floating review badge */}
+            <div className="absolute -bottom-5 left-3 lg:bottom-8 lg:-left-12 bg-white p-3 lg:p-4 rounded-2xl shadow-xl max-w-[200px] lg:max-w-[220px] animate-in fade-in zoom-in duration-700 delay-300">
+              <div className="flex gap-1 mb-1.5 lg:mb-2">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star key={star} className="w-3.5 h-3.5 lg:w-4 lg:h-4 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+              <p className="text-xs text-slate-600 font-medium leading-tight">
+                "It feels like a brand new house. Incredibly thorough!"
+              </p>
+            </div>
+          </div>
+
+          <div ref={contentRef} className="max-w-2xl order-2 lg:order-1 pt-4 lg:pt-0">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight leading-tight mb-6">
               Come home to <br className="hidden md:block" />
               <span className="text-primary relative inline-block">
@@ -54,26 +76,6 @@ export function Hero() {
             </div>
           </div>
 
-          <div ref={imageRef} className="relative">
-            <div className="absolute inset-0 bg-teal-100 rounded-3xl transform translate-x-4 translate-y-4 -z-10"></div>
-            <img 
-              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400" 
-              alt="Sparkling clean bright kitchen" 
-              className="rounded-3xl shadow-xl w-full object-cover aspect-[4/3]"
-            />
-            
-            {/* Floating review badge */}
-            <div className="absolute -bottom-6 -left-6 md:bottom-8 md:-left-12 bg-white p-4 rounded-2xl shadow-xl max-w-[220px] animate-in fade-in zoom-in duration-700 delay-300">
-              <div className="flex gap-1 mb-2">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                ))}
-              </div>
-              <p className="text-xs text-slate-600 font-medium leading-tight">
-                "It feels like a brand new house. Incredibly thorough!"
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
