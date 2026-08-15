@@ -1,0 +1,40 @@
+Prompt
+
+Build a modern, trustworthy, conversion-focused website for a residential/commercial cleaning service business called [BUSINESS NAME]. The site should feel clean, professional, and reassuring — this is a service people are inviting into their homes, so trust signals matter as much as aesthetics.
+
+Tech & Integration
+Use Cal.com as the scheduling and payment engine. Embed a Cal.com booking widget (inline embed, not just a link-out) on a dedicated "Book Now" section/page.
+Cal.com event types should map to service tiers (e.g., Standard Clean, Deep Clean, Move-In/Move-Out Clean, Recurring Clean) — leave the actual event type slugs as placeholders like {{CALCOM_USERNAME}}/standard-clean so I can wire up my real Cal.com account.
+Payment collection happens through Cal.com's built-in Stripe integration at booking time — don't build a separate checkout flow.
+Site should be mobile-first and fast-loading; most bookings will come from phone traffic.
+Pages/Sections
+Hero — clear value prop, primary CTA ("Book a Cleaning"), trust badges (insured/bonded, background-checked staff, satisfaction guarantee)
+Services — service tiers as cards (Standard, Deep Clean, Move-In/Out, Recurring/Subscription), each with a short description, what's included, and a "Book This" button linking to the matching Cal.com event
+Pricing — simple, transparent pricing table or "starting at" ranges by home size; note that Cal.com will handle final quote/payment at booking
+How It Works — 3-4 step process (Book online → We confirm → We clean → You review), reduces anxiety about a new service
+Service Area — map or list of neighborhoods/zip codes served (leave placeholder for [CITY/REGION])
+Testimonials/Reviews — placeholder review cards with star ratings
+Booking — the embedded Cal.com widget, front and center, with service selection
+FAQ — common questions (what to expect, supplies provided, cancellation policy, pets, etc.)
+Contact/Footer — phone, email, service hours, social links, insurance/bonding disclosure
+Design Direction
+Palette: clean whites/light neutrals with one accent color (suggest a fresh blue, green, or teal — avoid anything that feels sterile/clinical or overly corporate)
+Typography: friendly but professional — avoid anything too playful/casual
+Generous whitespace, soft shadows/rounded corners, real-feeling photography placeholders (not stock-photo-obvious)
+Include subtle trust-building UI details: verified badges, "X homes cleaned," guarantee icons
+Functional Requirements
+Cal.com embed must be responsive and not require leaving the page
+Sticky "Book Now" CTA on mobile scroll
+Form validation and loading states handled gracefully if any custom forms are used (e.g., a "get a custom quote" contact form separate from booking)
+Basic SEO: proper meta tags, semantic HTML, alt text placeholders
+Out of Scope
+Do not build a custom payment/checkout system — that's entirely handled by Cal.com + Stripe
+Do not build a custom scheduling calendar — Cal.com owns that UI
+
+Fill in before sending to the builder:
+
+[BUSINESS NAME]
+[CITY/REGION] service area
+Your actual Cal.com username/event slugs
+Real pricing tiers or ranges
+Logo/brand colors if you have them
