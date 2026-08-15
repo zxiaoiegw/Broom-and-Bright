@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import logoUrl from '@assets/Broom_logo_1786814397539.png';
+import logoUrl from '@assets/logo_1786815264958.png';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'wouter';
 
