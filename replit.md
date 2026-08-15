@@ -1,36 +1,51 @@
-# [Project name]
+# Cleaning & Spa Business Sites
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A pnpm monorepo containing two conversion-focused service business websites — **Broom & Bright** (residential/commercial cleaning) and **Serenity Spa** (massage & wellness) — plus a shared Express API server backed by PostgreSQL.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/broom-and-bright run dev` — Broom & Bright frontend (preview at `/broom-and-bright/`)
+- `pnpm --filter @workspace/serenity-spa run dev` — Serenity Spa frontend (preview at `/`)
+- `pnpm --filter @workspace/api-server run dev` — API server (requires `DATABASE_URL`)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
+- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+
+## Required environment variables
+
+- `DATABASE_URL` — Postgres connection string (needed for the API server; frontends run without it)
 
 ## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
+- pnpm workspaces, Node.js 20, TypeScript 5.9
+- Frontends: React + Vite + Tailwind CSS + shadcn/ui, routing via wouter
 - API: Express 5
 - DB: PostgreSQL + Drizzle ORM
 - Validation: Zod (`zod/v4`), `drizzle-zod`
 - API codegen: Orval (from OpenAPI spec)
 - Build: esbuild (CJS bundle)
+- Scheduling/payments: Cal.com embed (placeholders — wire in your real Cal.com username)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/broom-and-bright/` — Broom & Bright cleaning service site
+- `artifacts/serenity-spa/` — Serenity Massage & Spa site
+- `artifacts/api-server/` — Express API server
+- `lib/db/` — Drizzle ORM schema and client
+- `lib/api-spec/` — OpenAPI spec (source of truth for API contracts)
+- `lib/api-client-react/` — generated React Query hooks (from `pnpm codegen`)
+- `lib/api-zod/` — generated Zod schemas
+
+## Cal.com placeholders
+
+Both sites embed Cal.com booking widgets. Before going live, replace placeholder slugs like `{{CALCOM_USERNAME}}/standard-clean` with your real Cal.com username and event type slugs.
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
-
-## Product
-
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Two separate frontend artifacts share one API server and database — allows independent branding and deployment while reusing backend logic.
+- Cal.com owns scheduling + payment (Stripe integration built into Cal.com) — no custom checkout code needed.
+- API types are generated from the OpenAPI spec in `lib/api-spec/` — always run codegen after changing the spec.
 
 ## User preferences
 
@@ -38,8 +53,5 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- Frontends run without `DATABASE_URL`; the API server will crash on startup without it.
+- Always run `pnpm --filter @workspace/api-spec run codegen` after editing the OpenAPI spec, or the React hooks and Zod schemas will be out of date.
