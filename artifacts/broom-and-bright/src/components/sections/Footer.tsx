@@ -13,7 +13,7 @@ export function Footer() {
               <img
                 src={logoUrl}
                 alt="Broom & Bright"
-                className="h-10 w-auto brightness-0 invert group-hover:opacity-80 transition-opacity"
+                className="h-14 w-auto brightness-0 invert group-hover:opacity-80 transition-opacity"
               />
             </Link>
             <p className="max-w-md text-slate-400 mb-6 leading-relaxed">
