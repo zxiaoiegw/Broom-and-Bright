@@ -44,7 +44,7 @@ export function Nav() {
             <img
               src={logoUrl}
               alt="Broom & Bright"
-              className="h-16 md:h-20 w-auto group-hover:opacity-80 transition-opacity"
+              className="h-18 md:h-20 w-auto group-hover:opacity-80 transition-opacity"
             />
           </Link>
 
