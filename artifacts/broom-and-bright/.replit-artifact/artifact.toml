@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/broom-and-bright/"
+title = "Broom & Bright Cleaning"
+description = "A modern, conversion-focused, mobile-first website for Broom & Bright, a residential and commercial cleaning service. Features service tiers, pricing, Cal.com booking embed, testimonials, FAQ accordion, and trust signals."
+version = "1.0.0"
+id = "artifacts/broom-and-bright"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/broom-and-bright/" ]
+localPort = 20672
+
+[services.development]
+run = "pnpm --filter @workspace/broom-and-bright run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/broom-and-bright", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/broom-and-bright/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20672"
+BASE_PATH = "/broom-and-bright/"

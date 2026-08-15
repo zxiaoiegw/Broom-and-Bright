@@ -1,0 +1,81 @@
+import { Shield, CheckCircle, Star, Users } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Link } from 'wouter';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+
+export function Hero() {
+  const contentRef = useScrollReveal();
+  const imageRef = useScrollReveal();
+
+  return (
+    <section className="pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          <div ref={contentRef} className="max-w-2xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight leading-tight mb-6">
+              Come home to <br className="hidden md:block" />
+              <span className="text-primary relative inline-block">
+                bright, clean spaces.
+                <svg className="absolute w-full h-3 -bottom-1 left-0 text-teal-200/60 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
+                  <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
+                </svg>
+              </span>
+            </h1>
+            <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed">
+              We’re the cleaning service that earns a spare key. Trustworthy, meticulous, and dedicated to making your home feel like a breath of fresh air.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+              <Button asChild size="lg" className="rounded-full h-14 px-8 text-base shadow-lg hover:shadow-xl transition-all">
+                <Link href="/booking">Book a Cleaning</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="rounded-full h-14 px-8 text-base bg-white">
+                <a href="#pricing">See Pricing</a>
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 text-sm text-slate-700 font-medium">
+              <div className="flex items-center gap-2">
+                <Shield className="w-5 h-5 text-primary" />
+                <span>Insured & Bonded</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-primary" />
+                <span>Background-Checked</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Star className="w-5 h-5 text-primary" />
+                <span>Satisfaction Guarantee</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Users className="w-5 h-5 text-primary" />
+                <span>500+ Homes Cleaned</span>
+              </div>
+            </div>
+          </div>
+
+          <div ref={imageRef} className="relative">
+            <div className="absolute inset-0 bg-teal-100 rounded-3xl transform translate-x-4 translate-y-4 -z-10"></div>
+            <img 
+              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400" 
+              alt="Sparkling clean bright kitchen" 
+              className="rounded-3xl shadow-xl w-full object-cover aspect-[4/3]"
+            />
+            
+            {/* Floating review badge */}
+            <div className="absolute -bottom-6 -left-6 md:bottom-8 md:-left-12 bg-white p-4 rounded-2xl shadow-xl max-w-[220px] animate-in fade-in zoom-in duration-700 delay-300">
+              <div className="flex gap-1 mb-2">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star key={star} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+              <p className="text-xs text-slate-600 font-medium leading-tight">
+                "It feels like a brand new house. Incredibly thorough!"
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
