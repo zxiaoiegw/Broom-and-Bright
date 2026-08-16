@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://broom-and-bright.replit.app/sitemap.xml

@@ -2,14 +2,13 @@ import { MapPin } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const neighborhoods = [
-  'Riverside Heights 12345',
-  'Maplewood District 12346',
-  'Oak Valley Estates 12347',
-  'Downtown Core 12348',
-  'Westend Hills 12349',
-  'Pine Ridge 12350',
-  'Silver Lake 12351',
-  'Brookside 12352',
+  'Kansas City 64152',
+  'Overland Park 66223',
+  'Leawood 66211',
+  'Lenexa 66215',
+  'Olathe 66061',
+  'Shawnee 66226',
+  'Prairie Village 66208',
 ];
 
 export function ServiceArea() {
@@ -22,7 +21,7 @@ export function ServiceArea() {
           <div className="md:w-1/2 max-w-lg">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Proudly serving your neighborhood</h2>
             <p className="text-lg text-slate-600 mb-6">
-              Broom & Bright provides top-tier residential and commercial cleaning services across the metropolitan region and surrounding suburbs.
+              Broom & Bright provides top-tier residential and commercial cleaning services across the Kansas City region and surrounding suburbs.
             </p>
             <div className="bg-amber-50 text-amber-900 p-4 rounded-2xl text-sm font-medium border border-amber-100">
               Don't see your neighborhood? Contact us — we regularly expand our routes and may still be able to help.

@@ -3,8 +3,14 @@ import { useEffect } from 'react';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/sections/Footer';
 import { Shield, CheckCircle, Star } from 'lucide-react';
+import { useDocumentHead } from '@/hooks/useDocumentHead';
 
 export default function Booking() {
+  useDocumentHead(
+    'Book a Cleaning | Broom & Bright Kansas City',
+    'Schedule your residential cleaning in Kansas City, Overland Park, Leawood, and surrounding areas. Secure online booking.',
+  );
+
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: 'all-services' });
