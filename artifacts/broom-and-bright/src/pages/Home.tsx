@@ -8,7 +8,6 @@ import { Testimonials } from '@/components/sections/Testimonials';
 import { FAQ } from '@/components/sections/FAQ';
 import { ContactForm } from '@/components/sections/ContactForm';
 import { Footer } from '@/components/sections/Footer';
-import { MobileStickyBooking } from '@/components/MobileStickyBooking';
 import { useDocumentHead } from '@/hooks/useDocumentHead';
 
 export default function Home() {
@@ -33,7 +32,6 @@ export default function Home() {
       </main>
 
       <Footer />
-      <MobileStickyBooking />
     </div>
   );
 }

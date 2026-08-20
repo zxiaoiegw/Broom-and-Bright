@@ -45,10 +45,10 @@ export function HowItWorks() {
             {steps.map((step, index) => (
               <div key={index} className="text-center relative">
                 <div className="w-24 h-24 mx-auto bg-white rounded-full shadow-lg flex items-center justify-center mb-6 relative border-4 border-slate-50">
-                  <div className="absolute -top-3 -right-3 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm border-4 border-slate-50 shadow-sm">
+                  <div className="absolute -top-3 -right-3 w-8 h-8 bg-[#6ba4b8] text-white rounded-full flex items-center justify-center font-bold text-sm border-4 border-slate-50 shadow-sm">
                     {index + 1}
                   </div>
-                  <step.icon className="w-10 h-10 text-primary" />
+                  <step.icon className="w-10 h-10 text-[#6ba4b8]" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{step.title}</h3>
                 <p className="text-slate-600 leading-relaxed px-4">

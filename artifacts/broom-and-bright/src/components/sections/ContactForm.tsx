@@ -75,7 +75,7 @@ export function ContactForm() {
           <div className="md:col-span-2">
             <h2 className="text-3xl font-bold mb-4">Have questions?</h2>
             <p className="text-slate-300 mb-8">
-              Request a custom quote for a 4BR+ home or ask us anything. We typically reply within 2 hours.
+              Request a custom quote for a 5BR+ home or ask us anything. We typically reply within 2 hours.
             </p>
             <div className="space-y-4 text-sm text-slate-300">
               <p><strong>Email:</strong><br/>hello@broomandbrightcleaning.com</p>
@@ -134,7 +134,8 @@ export function ContactForm() {
                     <option>Studio / 1BR</option>
                     <option>2BR / 1-2BA</option>
                     <option>3BR / 2BA</option>
-                    <option>4BR+</option>
+                    <option>4BR / 3-4BA</option>
+                    <option>5BR+</option>
                   </select>
                 </div>
                 <div className="space-y-1">
@@ -161,7 +162,7 @@ export function ContactForm() {
                 Clicking "Send Message" opens your email client with your details pre-filled.
               </p>
 
-              <Button type="submit" className="w-full h-12 rounded-xl text-base">
+              <Button type="submit" className="w-full rounded-full h-12 mt-auto text-black font-bold border-2 border-primary bg-transparent">
                 <Send className="w-5 h-5 mr-2" /> Send Message
               </Button>
             </form>

@@ -39,14 +39,20 @@ export function Pricing() {
                     <td className="py-4 px-6 text-slate-600">from $189</td>
                     <td className="py-4 px-6 text-slate-600">from $249</td>
                   </tr>
-                  <tr className="hover:bg-slate-50/50 transition-colors bg-teal-50/30">
+                  <tr className="hover:bg-slate-50/50 transition-colors">
                     <td className="py-4 px-6 font-medium text-slate-900">3BR / 2BA</td>
-                    <td className="py-4 px-6 text-primary font-medium">from $149</td>
+                    <td className="py-4 px-6 text-slate-600">from $149</td>
                     <td className="py-4 px-6 text-slate-600">from $229</td>
                     <td className="py-4 px-6 text-slate-600">from $299</td>
                   </tr>
+                  <tr className="hover:bg-slate-50/50 transition-colors bg-[#6ba4b8]/10">
+                    <td className="py-4 px-6 font-medium text-slate-900">4BR / 3-4BA</td>
+                    <td className="py-4 px-6 text-[#6ba4b8] font-medium">from $179</td>
+                    <td className="py-4 px-6 text-slate-600">from $269</td>
+                    <td className="py-4 px-6 text-slate-600">from $349</td>
+                  </tr>
                   <tr className="hover:bg-slate-50/50 transition-colors">
-                    <td className="py-4 px-6 font-medium text-slate-900">4BR+</td>
+                    <td className="py-4 px-6 font-medium text-slate-900">5BR+</td>
                     <td className="py-4 px-6 text-slate-500 italic">Custom Quote</td>
                     <td className="py-4 px-6 text-slate-500 italic">Custom Quote</td>
                     <td className="py-4 px-6 text-slate-500 italic">Custom Quote</td>
@@ -56,7 +62,7 @@ export function Pricing() {
             </div>
             
             <div className="bg-slate-50 p-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm border-t border-slate-100">
-              <div className="flex items-center gap-2 text-primary font-medium bg-teal-100/50 px-3 py-1.5 rounded-full">
+              <div className="flex items-center gap-2 text-[#6ba4b8] font-medium bg-[#6ba4b8]/50 px-3 py-1.5 rounded-full">
                 <Info className="w-4 h-4" />
                 Recurring subscriptions save 10–20% on all standard cleans.
               </div>

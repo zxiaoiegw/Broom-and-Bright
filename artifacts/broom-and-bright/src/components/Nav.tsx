@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import logoUrl from "@assets/logo_1786815264958.png";
+import { Menu, X, Phone } from "lucide-react";
+import logoUrl from "@assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
 
@@ -64,24 +64,40 @@ export function Nav() {
             <Button
               asChild
               size="lg"
-              className="rounded-full shadow-sm hover:shadow-md transition-all"
+              className="rounded-full text-black border-primary bg-primary/80 shadow-sm hover:shadow-md transition-all"
             >
-              <Link href="/booking">Book a Cleaning</Link>
+              <Link href="/booking">Schedule Today</Link>
             </Button>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden p-2 text-slate-600"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </button>
+          {/* Mobile: phone number + menu toggle */}
+          <div className="md:hidden flex items-center gap-3">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-full text-black border-primary bg-primary/80 shadow-sm hover:shadow-md transition-all"
+            >
+              <Link href="/booking">Schedule Today</Link>
+            </Button>
+            {/* <a
+              href="tel:+15558675309"
+              className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 whitespace-nowrap"
+            >
+              <Phone className="h-4 w-4 text-primary shrink-0" />
+              (555) 867-5309
+            </a> */}
+            <button
+              className="p-2 text-slate-600"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -98,14 +114,14 @@ export function Nav() {
               {label}
             </a>
           ))}
-          <Button
+          {/* <Button
             asChild
             size="lg"
             className="w-full mt-2 rounded-full"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <Link href="/booking">Book a Cleaning</Link>
-          </Button>
+          </Button> */}
         </div>
       )}
     </nav>

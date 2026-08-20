@@ -55,3 +55,5 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 - Frontends run without `DATABASE_URL`; the API server will crash on startup without it.
 - Always run `pnpm --filter @workspace/api-spec run codegen` after editing the OpenAPI spec, or the React hooks and Zod schemas will be out of date.
+
+pnpm --filter @workspace/broom-and-bright dev:local

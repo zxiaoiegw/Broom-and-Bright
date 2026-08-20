@@ -6,6 +6,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import Home from '@/pages/Home';
 import Booking from '@/pages/Booking';
+import FreeQuote from '@/pages/FreeQuote';
 import {
   Route,
   Switch,
@@ -23,6 +24,7 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/booking" component={Booking} />
+        <Route path="/free-quote" component={FreeQuote} />
         <Route component={NotFound} />
       </Switch>
     </RoutedErrorBoundary>
