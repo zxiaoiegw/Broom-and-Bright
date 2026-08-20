@@ -132,6 +132,19 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Widen the default Tailwind container on large screens so content
+   uses more of the available space instead of leaving big side margins. */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1680px;
+  }
+}
+
 .reveal-hidden {
   opacity: 0;
   transform: translateY(20px);
