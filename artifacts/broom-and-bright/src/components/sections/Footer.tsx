@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Twitter } from "lucide-react";
-import logoUrl from "@assets/logo.png";
+import logoUrl from "@assets/logo_1786815264958.png";
 import { Link } from "wouter";
 
 export function Footer() {
