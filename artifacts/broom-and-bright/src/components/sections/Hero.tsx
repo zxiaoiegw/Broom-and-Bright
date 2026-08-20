@@ -30,7 +30,7 @@ export function Hero() {
 
   return (
     <section className="pt-24 pb-16 md:pt-40 md:pb-24 overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container-wide mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
           {/* Compact image banner — shows first on mobile, second on desktop */}
           <div ref={imageRef} className="relative order-1 lg:order-2 mb-6 lg:mb-0">

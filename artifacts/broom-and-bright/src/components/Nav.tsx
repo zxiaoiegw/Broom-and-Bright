@@ -38,7 +38,7 @@ export function Nav() {
           : "bg-white py-5"
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container-wide mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center group">
             <img

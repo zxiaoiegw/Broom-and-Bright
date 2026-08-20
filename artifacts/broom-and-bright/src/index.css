@@ -132,15 +132,34 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Widen the default Tailwind container on large screens so content
-   uses more of the available space instead of leaving big side margins. */
+/* A wider variant of Tailwind's .container, opt-in per section, so it
+   doesn't affect narrow content like the free-quote form. */
+.container-wide {
+  width: 100%;
+  margin-inline: auto;
+}
+@media (min-width: 640px) {
+  .container-wide {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .container-wide {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .container-wide {
+    max-width: 1024px;
+  }
+}
 @media (min-width: 1280px) {
-  .container {
+  .container-wide {
     max-width: 1400px;
   }
 }
 @media (min-width: 1536px) {
-  .container {
+  .container-wide {
     max-width: 1680px;
   }
 }
