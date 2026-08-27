@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://broom-and-bright.replit.app/sitemap.xml
+Sitemap: https://truecleankc.com/sitemap.xml
