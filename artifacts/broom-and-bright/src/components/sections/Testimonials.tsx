@@ -3,7 +3,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const reviews = [
   {
-    quote: "I've tried three other services and Broom & Bright is in a completely different league. My apartment looked brand new after the first visit. I've had a recurring booking ever since.",
+    quote: "I've tried three other services and TrueClean KC is in a completely different league. My apartment looked brand new after the first visit. I've had a recurring booking ever since.",
     name: "Sarah M.",
     location: "Riverside Heights",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",

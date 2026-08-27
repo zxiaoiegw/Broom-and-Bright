@@ -4,6 +4,7 @@ import { Form } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import { useForm } from 'react-hook-form';
 import { useDocumentHead } from '@/hooks/useDocumentHead';
+import { API_URL } from '@/lib/api';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -20,7 +21,7 @@ import { ReviewStep } from './free-quote/ReviewStep';
 
 export default function FreeQuote() {
   useDocumentHead(
-    'Free Quote | Broom & Bright Kansas City',
+    'Free Quote | TrueClean KC Kansas City',
     'Get a free quote for your residential cleaning in Kansas City, Overland Park, Leawood, and surrounding areas. Contact us today to schedule your cleaning service and receive a personalized quote tailored to your needs.',
   );
 
@@ -99,7 +100,7 @@ export default function FreeQuote() {
       formData.append('estimatedTotal', estimatedTotal !== null ? String(estimatedTotal) : 'Custom Quote (5BR+)');
       photos.forEach((file) => formData.append('photos', file));
 
-      const response = await fetch('http://localhost:4000/api/quote-requests', {
+      const response = await fetch(`${API_URL}/api/quote-requests`, {
         method: 'POST',
         body: formData,
       });

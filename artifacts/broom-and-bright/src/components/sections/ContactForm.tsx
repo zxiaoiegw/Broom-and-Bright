@@ -1,7 +1,8 @@
 import { useState, FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
-import { Send, Mail } from 'lucide-react';
+import { Send, Mail, CheckCircle } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { API_URL } from '@/lib/api';
 
 interface FormFields {
   name: string;
@@ -38,6 +39,9 @@ export function ContactForm() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [isSent, setIsSent] = useState(false);
 
   const set = (key: keyof FormFields) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -46,18 +50,28 @@ export function ContactForm() {
     if (submitted) setErrors(validate({ ...fields, [key]: e.target.value }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
     const errs = validate(fields);
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
 
-    const subject = encodeURIComponent(`Quote Request – ${fields.service} (${fields.size})`);
-    const body = encodeURIComponent(
-      `Name: ${fields.name}\nEmail: ${fields.email}\nPhone: ${fields.phone || 'N/A'}\nHome Size: ${fields.size}\nService: ${fields.service}\n\n${fields.message}`
-    );
-    window.location.href = `mailto:hello@broomandbrightcleaning.com?subject=${subject}&body=${body}`;
+    setIsSubmitting(true);
+    setSubmitError(null);
+    try {
+      const response = await fetch(`${API_URL}/api/contact-requests`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(fields),
+      });
+      if (!response.ok) throw new Error('Request failed');
+      setIsSent(true);
+    } catch {
+      setSubmitError("We couldn't send your message. Please try again or email us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const fieldClass = (hasError: boolean) =>
@@ -78,13 +92,23 @@ export function ContactForm() {
               Request a custom quote for a 5BR+ home or ask us anything. We typically reply within 2 hours.
             </p>
             <div className="space-y-4 text-sm text-slate-300">
-              <p><strong>Email:</strong><br/>hello@broomandbrightcleaning.com</p>
+              <p><strong>Email:</strong><br/>info@truecleankc.com</p>
               <p><strong>Phone:</strong><br/>(555) 867-5309</p>
               <p><strong>Hours:</strong><br/>Mon–Sat, 8AM–6PM</p>
             </div>
           </div>
           
           <div className="md:col-span-3 bg-white text-slate-900 rounded-2xl p-6 md:p-8">
+            {isSent ? (
+              <div className="flex flex-col items-center text-center py-10">
+                <CheckCircle className="w-12 h-12 text-primary mb-4" />
+                <h3 className="text-xl font-bold mb-2">Message sent</h3>
+                <p className="text-slate-600 text-sm max-w-xs">
+                  Thanks, {fields.name.split(' ')[0] || 'there'} — we've got your message and
+                  typically reply within 2 hours.
+                </p>
+              </div>
+            ) : (
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
@@ -159,13 +183,18 @@ export function ContactForm() {
 
               <p className="text-xs text-slate-400 flex items-center gap-1.5">
                 <Mail className="w-3.5 h-3.5 flex-shrink-0" />
-                Clicking "Send Message" opens your email client with your details pre-filled.
+                We'll send your message to our team and reply by email, usually within 2 hours.
               </p>
 
-              <Button type="submit" className="w-full rounded-full h-12 mt-auto text-black font-bold border-2 border-primary bg-transparent">
-                <Send className="w-5 h-5 mr-2" /> Send Message
+              {submitError && (
+                <p role="alert" className="text-sm font-medium text-red-500 text-center">{submitError}</p>
+              )}
+
+              <Button type="submit" disabled={isSubmitting} className="w-full rounded-full h-12 mt-auto text-black font-bold border-2 border-primary bg-transparent">
+                <Send className="w-5 h-5 mr-2" /> {isSubmitting ? 'Sending…' : 'Send Message'}
               </Button>
             </form>
+            )}
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ import { useDocumentHead } from '@/hooks/useDocumentHead';
 
 export default function Home() {
   useDocumentHead(
-    'Broom & Bright | Professional Cleaning Services in Kansas City',
+    'TrueClean KC | Professional Cleaning Services in Kansas City',
     'Professional, trusted, and thorough residential cleaning services in the Kansas City area.',
   );
 

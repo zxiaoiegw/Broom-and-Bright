@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
-import logoUrl from "@assets/logo.png";
+import logoUrl from "@assets/logo.svg";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
 
@@ -43,7 +43,7 @@ export function Nav() {
           <Link href="/" className="flex items-center group">
             <img
               src={logoUrl}
-              alt="Broom & Bright"
+              alt="TrueClean KC"
               className="h-18 md:h-20 w-auto group-hover:opacity-80 transition-opacity"
             />
           </Link>

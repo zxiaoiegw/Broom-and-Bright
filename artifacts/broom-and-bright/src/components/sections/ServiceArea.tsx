@@ -21,7 +21,7 @@ export function ServiceArea() {
           <div className="md:w-1/2 max-w-lg">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Proudly serving your neighborhood</h2>
             <p className="text-lg text-slate-600 mb-6">
-              Broom & Bright provides top-tier residential and commercial cleaning services across the Kansas City region and surrounding suburbs.
+              TrueClean KC provides top-tier residential and commercial cleaning services across the Kansas City region and surrounding suburbs.
             </p>
             <div className="bg-amber-50 text-amber-900 p-4 rounded-2xl text-sm font-medium border border-amber-100">
               Don't see your neighborhood? Contact us — we regularly expand our routes and may still be able to help.

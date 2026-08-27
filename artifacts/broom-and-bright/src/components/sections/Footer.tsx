@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Twitter } from "lucide-react";
-import logoUrl from "@assets/logo.png";
+import logoUrl from "@assets/logo.svg";
 import { Link } from "wouter";
 
 export function Footer() {
@@ -11,7 +11,7 @@ export function Footer() {
             <Link href="/" className="mb-6 group inline-flex items-center">
               <img
                 src={logoUrl}
-                alt="Broom & Bright"
+                alt="TrueClean KC"
                 className="h-16 w-auto brightness-0 invert group-hover:opacity-80 transition-opacity"
               />
             </Link>
@@ -109,12 +109,12 @@ export function Footer() {
 
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Broom & Bright Cleaning. All
+            &copy; {new Date().getFullYear()} TrueClean KC. All
             rights reserved.
           </p>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-            <span>Fully licensed, insured, and bonded. License #BB89241</span>
+            <span>Fully licensed, insured, and bonded. License #TC89241</span>
           </div>
         </div>
       </div>

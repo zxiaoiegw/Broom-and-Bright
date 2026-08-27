@@ -1,10 +1,10 @@
 # Cleaning & Spa Business Sites
 
-A pnpm monorepo containing two conversion-focused service business websites — **Broom & Bright** (residential/commercial cleaning) and **Serenity Spa** (massage & wellness) — plus a shared Express API server backed by PostgreSQL.
+A pnpm monorepo containing two conversion-focused service business websites — **TrueClean KC** (residential/commercial cleaning) and **Serenity Spa** (massage & wellness) — plus a shared Express API server backed by PostgreSQL.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/broom-and-bright run dev` — Broom & Bright frontend (preview at `/broom-and-bright/`)
+- `pnpm --filter @workspace/broom-and-bright run dev` — TrueClean KC frontend (preview at `/broom-and-bright/`)
 - `pnpm --filter @workspace/serenity-spa run dev` — Serenity Spa frontend (preview at `/`)
 - `pnpm --filter @workspace/api-server run dev` — API server (requires `DATABASE_URL`)
 - `pnpm run typecheck` — full typecheck across all packages
@@ -29,7 +29,7 @@ A pnpm monorepo containing two conversion-focused service business websites — 
 
 ## Where things live
 
-- `artifacts/broom-and-bright/` — Broom & Bright cleaning service site
+- `artifacts/broom-and-bright/` — TrueClean KC cleaning service site
 - `artifacts/serenity-spa/` — Serenity Massage & Spa site
 - `artifacts/api-server/` — Express API server
 - `lib/db/` — Drizzle ORM schema and client
@@ -56,4 +56,4 @@ _Populate as you build — explicit user instructions worth remembering across s
 - Frontends run without `DATABASE_URL`; the API server will crash on startup without it.
 - Always run `pnpm --filter @workspace/api-spec run codegen` after editing the OpenAPI spec, or the React hooks and Zod schemas will be out of date.
 
-pnpm --filter @workspace/broom-and-bright dev:local
+

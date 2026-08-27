@@ -45,7 +45,7 @@ export function FAQ() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
           <p className="text-lg text-slate-600">
-            Everything you need to know about the Broom & Bright experience.
+            Everything you need to know about the TrueClean KC experience.
           </p>
         </div>
 

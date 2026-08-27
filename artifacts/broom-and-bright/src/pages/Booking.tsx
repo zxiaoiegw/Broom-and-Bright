@@ -7,7 +7,7 @@ import { useDocumentHead } from '@/hooks/useDocumentHead';
 
 export default function Booking() {
   useDocumentHead(
-    'Book a Cleaning | Broom & Bright Kansas City',
+    'Book a Cleaning | TrueClean KC Kansas City',
     'Schedule your residential cleaning in Kansas City, Overland Park, Leawood, and surrounding areas. Secure online booking.',
   );
 

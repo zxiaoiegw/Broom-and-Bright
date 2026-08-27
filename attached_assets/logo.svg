@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 210" fill="none">
+  <title>TrueClean KC</title>
+
+  <!-- Icon: sparkle + roof + window + swoosh -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- large sparkle -->
+    <path d="M52 24 L60 46 L82 54 L60 62 L52 84 L44 62 L22 54 L44 46 Z" fill="#14b8a6"/>
+    <!-- small sparkle -->
+    <path d="M30 92 L34 102 L44 106 L34 110 L30 120 L26 110 L16 106 L26 102 Z" fill="#14b8a6"/>
+    <!-- roof -->
+    <path d="M34 138 L112 74 L190 138" stroke="#14b8a6" stroke-width="18"/>
+    <!-- chimney -->
+    <path d="M172 92 L172 122" stroke="#14b8a6" stroke-width="18"/>
+    <!-- 4-pane window -->
+    <path d="M92 126 h20 v20 h-20 Z M120 126 h20 v20 h-20 Z M92 154 h20 v20 h-20 Z M120 154 h20 v20 h-20 Z" fill="#14b8a6"/>
+    <!-- swoosh -->
+    <path d="M30 158 C 74 190, 150 190, 194 158" stroke="#7dd3c8" stroke-width="12"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="800" letter-spacing="-1.5">
+    <text x="214" y="98" font-size="68" fill="#1e293b">True</text>
+    <text x="214" y="168" font-size="68" fill="#14b8a6">Clean</text>
+  </g>
+
+  <!-- KC badge -->
+  <rect x="436" y="112" width="82" height="56" rx="14" stroke="#14b8a6" stroke-width="5"/>
+  <text x="477" y="152" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="38" fill="#14b8a6" text-anchor="middle">KC</text>
+</svg>

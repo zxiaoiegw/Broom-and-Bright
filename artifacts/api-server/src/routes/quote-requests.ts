@@ -27,7 +27,7 @@ router.post("/quote-requests", upload.array("photos"), async(req, res) => {
 
   try {
     const { error } = await resend.emails.send({
-        from: "Broom & Bright Website <onboarding@resend.dev>",
+        from: "TrueClean KC Website <onboarding@resend.dev>",
         to: process.env.QUOTE_NOTIFICATION_EMAIL!,
         subject: `Free Quote Request from ${firstName} ${lastName}`,
         html: `<p><strong>Name:</strong> ${firstName} ${lastName}</p>
