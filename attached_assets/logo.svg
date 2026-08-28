@@ -25,12 +25,12 @@
   </g>
 
   <!-- Wordmark -->
-  <g font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="400" letter-spacing="0">
+  <g font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="700" letter-spacing="0">
     <text x="214" y="98" font-size="68" fill="url(#blueGrad)">True</text>
     <text x="214" y="168" font-size="68" fill="url(#blueGrad)">Clean</text>
   </g>
 
   <!-- KC badge -->
-  <rect x="436" y="112" width="82" height="56" rx="14" stroke="url(#blueGrad)" stroke-width="4"/>
-  <text x="477" y="152" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="38" fill="url(#blueGrad)" text-anchor="middle">KC</text>
+  <rect x="436" y="112" width="82" height="56" rx="14" stroke="url(#blueGrad)" stroke-width="5"/>
+  <text x="477" y="152" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="38" fill="url(#blueGrad)" text-anchor="middle">KC</text>
 </svg>
