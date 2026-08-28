@@ -1,4 +1,3 @@
-import { Facebook, Instagram, Twitter } from "lucide-react";
 import logoUrl from "@assets/logo.svg";
 import { Link } from "wouter";
 
@@ -20,26 +19,6 @@ export function Footer() {
               meticulous, and dedicated to making your home feel like a breath
               of fresh air.
             </p>
-            <div className="flex gap-4">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-            </div>
           </div>
 
           <div>
@@ -67,14 +46,6 @@ export function Footer() {
                   className="hover:text-primary transition-colors"
                 >
                   How It Works
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#reviews"
-                  className="hover:text-primary transition-colors"
-                >
-                  Reviews
                 </a>
               </li>
               <li>

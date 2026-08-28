@@ -23,6 +23,7 @@ export default function FreeQuote() {
   useDocumentHead(
     'Free Quote | TrueClean KC Kansas City',
     'Get a free quote for your residential cleaning in Kansas City, Overland Park, Leawood, and surrounding areas. Contact us today to schedule your cleaning service and receive a personalized quote tailored to your needs.',
+    '/free-quote',
   );
 
   const form = useForm<FreeQuoteFormValues>({

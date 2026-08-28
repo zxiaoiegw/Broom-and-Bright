@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 
-export function useDocumentHead(title: string, description: string) {
+const SITE_URL = 'https://www.truecleankc.com';
+
+export function useDocumentHead(title: string, description: string, path: string = '/') {
   useEffect(() => {
     document.title = title;
 
@@ -12,5 +14,18 @@ export function useDocumentHead(title: string, description: string) {
 
     const ogDescription = document.querySelector('meta[property="og:description"]');
     if (ogDescription) ogDescription.setAttribute('content', description);
-  }, [title, description]);
+
+    const canonicalUrl = `${SITE_URL}${path}`;
+
+    let canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', canonicalUrl);
+
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
+  }, [title, description, path]);
 }

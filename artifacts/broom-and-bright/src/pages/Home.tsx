@@ -4,7 +4,6 @@ import { Services } from '@/components/sections/Services';
 import { Pricing } from '@/components/sections/Pricing';
 import { HowItWorks } from '@/components/sections/HowItWorks';
 import { ServiceArea } from '@/components/sections/ServiceArea';
-import { Testimonials } from '@/components/sections/Testimonials';
 import { FAQ } from '@/components/sections/FAQ';
 import { ContactForm } from '@/components/sections/ContactForm';
 import { Footer } from '@/components/sections/Footer';
@@ -14,6 +13,7 @@ export default function Home() {
   useDocumentHead(
     'TrueClean KC | Professional Cleaning Services in Kansas City',
     'Professional, trusted, and thorough residential cleaning services in the Kansas City area.',
+    '/',
   );
 
   return (
@@ -26,7 +26,6 @@ export default function Home() {
         <HowItWorks />
         <Pricing />
         <ServiceArea />
-        <Testimonials />
         <FAQ />
         <ContactForm />
       </main>

@@ -8,7 +8,6 @@ const SECTIONS = [
   { label: "Services", hash: "services" },
   { label: "Pricing", hash: "pricing" },
   { label: "How It Works", hash: "how-it-works" },
-  { label: "Reviews", hash: "reviews" },
   { label: "FAQ", hash: "faq" },
 ];
 
@@ -80,11 +79,11 @@ export function Nav() {
               <Link href="/booking">Schedule Today</Link>
             </Button>
             {/* <a
-              href="tel:+15558675309"
+              href="tel:+17858291574"
               className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 whitespace-nowrap"
             >
               <Phone className="h-4 w-4 text-primary shrink-0" />
-              (555) 867-5309
+              (785) 829-1574
             </a> */}
             <button
               className="p-2 text-slate-600"

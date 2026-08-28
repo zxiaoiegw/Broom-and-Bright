@@ -93,7 +93,7 @@ export function ContactForm() {
             </p>
             <div className="space-y-4 text-sm text-slate-300">
               <p><strong>Email:</strong><br/>info@truecleankc.com</p>
-              <p><strong>Phone:</strong><br/>(555) 867-5309</p>
+              <p><strong>Phone:</strong><br/>(785) 829-1574</p>
               <p><strong>Hours:</strong><br/>Mon–Sat, 8AM–6PM</p>
             </div>
           </div>

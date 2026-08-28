@@ -18,13 +18,13 @@ export function Hero() {
 
   const phonePill = (
     <a
-      href="tel:+15558675309"
+      href="tel:+17858291574"
       className="flex items-center gap-3 h-14 px-6 rounded-full bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all"
     >
       <span className="flex items-center justify-center w-9 h-9 rounded-full bg-teal-50 text-primary shrink-0">
         <Phone className="w-4 h-4" />
       </span>
-      <span className="text-base font-semibold text-slate-900">(555) 867-5309</span>
+      <span className="text-base font-semibold text-slate-900">(785) 829-1574</span>
     </a>
   );
 
