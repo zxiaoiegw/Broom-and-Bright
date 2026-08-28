@@ -11,7 +11,7 @@ export function Footer() {
               <img
                 src={logoUrl}
                 alt="TrueClean KC"
-                className="h-16 w-auto brightness-0 invert group-hover:opacity-80 transition-opacity"
+                className="h-12 w-auto brightness-0 invert group-hover:opacity-80 transition-opacity"
               />
             </Link>
             <p className="max-w-md text-slate-400 mb-6 leading-relaxed">

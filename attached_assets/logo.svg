@@ -1,29 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 210" fill="none">
   <title>TrueClean KC</title>
 
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0C2367"/>
+      <stop offset="100%" stop-color="#2E5FD9"/>
+    </linearGradient>
+  </defs>
+
   <!-- Icon: sparkle + roof + window + swoosh -->
   <g stroke-linecap="round" stroke-linejoin="round">
     <!-- large sparkle -->
-    <path d="M52 24 L60 46 L82 54 L60 62 L52 84 L44 62 L22 54 L44 46 Z" fill="#2563eb"/>
+    <path d="M52 24 L60 46 L82 54 L60 62 L52 84 L44 62 L22 54 L44 46 Z" fill="url(#blueGrad)"/>
     <!-- small sparkle (yellow accent) -->
-    <path d="M30 92 L34 102 L44 106 L34 110 L30 120 L26 110 L16 106 L26 102 Z" fill="#facc15"/>
+    <path d="M30 92 L34 102 L44 106 L34 110 L30 120 L26 110 L16 106 L26 102 Z" fill="#F5B324"/>
     <!-- roof -->
-    <path d="M34 138 L112 74 L190 138" stroke="#2563eb" stroke-width="18"/>
+    <path d="M34 138 L112 74 L190 138" stroke="url(#blueGrad)" stroke-width="10"/>
     <!-- chimney -->
-    <path d="M172 92 L172 122" stroke="#2563eb" stroke-width="18"/>
+    <path d="M172 92 L172 122" stroke="url(#blueGrad)" stroke-width="10"/>
     <!-- 4-pane window -->
-    <path d="M92 126 h20 v20 h-20 Z M120 126 h20 v20 h-20 Z M92 154 h20 v20 h-20 Z M120 154 h20 v20 h-20 Z" fill="#2563eb"/>
+    <path d="M96 130 h14 v14 h-14 Z M124 130 h14 v14 h-14 Z M96 158 h14 v14 h-14 Z M124 158 h14 v14 h-14 Z" fill="url(#blueGrad)"/>
     <!-- swoosh -->
-    <path d="M30 158 C 74 190, 150 190, 194 158" stroke="#facc15" stroke-width="12"/>
+    <path d="M30 158 C 74 190, 150 190, 194 158" stroke="#F5B324" stroke-width="7"/>
   </g>
 
   <!-- Wordmark -->
   <g font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="400" letter-spacing="0">
-    <text x="214" y="98" font-size="68" fill="#1e293b">True</text>
-    <text x="214" y="168" font-size="68" fill="#2563eb">Clean</text>
+    <text x="214" y="98" font-size="68" fill="url(#blueGrad)">True</text>
+    <text x="214" y="168" font-size="68" fill="url(#blueGrad)">Clean</text>
   </g>
 
   <!-- KC badge -->
-  <rect x="436" y="112" width="82" height="56" rx="14" stroke="#2563eb" stroke-width="4"/>
-  <text x="477" y="152" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="38" fill="#2563eb" text-anchor="middle">KC</text>
+  <rect x="436" y="112" width="82" height="56" rx="14" stroke="url(#blueGrad)" stroke-width="4"/>
+  <text x="477" y="152" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="38" fill="url(#blueGrad)" text-anchor="middle">KC</text>
 </svg>

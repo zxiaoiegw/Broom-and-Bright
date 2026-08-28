@@ -43,7 +43,7 @@ export function Nav() {
             <img
               src={logoUrl}
               alt="TrueClean KC"
-              className="h-18 md:h-20 w-auto group-hover:opacity-80 transition-opacity"
+              className="h-12 md:h-14 w-auto group-hover:opacity-80 transition-opacity"
             />
           </Link>
 
