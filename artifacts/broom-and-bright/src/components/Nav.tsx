@@ -70,7 +70,7 @@ export function Nav() {
             <Button
               asChild
               size="lg"
-              className="rounded-full text-black border-primary bg-primary/80 shadow-sm hover:shadow-md transition-all"
+              className="rounded-full px-5 text-black border-primary bg-primary/80 shadow-sm hover:shadow-md transition-all"
             >
               <Link href="/booking">Schedule Today</Link>
             </Button>
@@ -81,7 +81,7 @@ export function Nav() {
             <Button
               asChild
               size="lg"
-              className="rounded-full text-black border-primary bg-primary/80 shadow-sm hover:shadow-md transition-all"
+              className="rounded-full px-5 text-black border-primary bg-primary/80 shadow-sm hover:shadow-md transition-all"
             >
               <Link href="/booking">Schedule Today</Link>
             </Button>
