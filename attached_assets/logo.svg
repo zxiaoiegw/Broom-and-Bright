@@ -37,6 +37,6 @@
   </g>
 
   <!-- KC badge -->
-  <rect x="456" y="108" width="92" height="64" rx="14" stroke="url(#yellowGrad)" stroke-width="5"/>
-  <text x="502" y="156" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="44" fill="url(#yellowGrad)" text-anchor="middle">KC</text>
+  <rect x="470" y="108" width="92" height="64" rx="14" stroke="url(#yellowGrad)" stroke-width="5"/>
+  <text x="516" y="156" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="44" fill="url(#yellowGrad)" text-anchor="middle">KC</text>
 </svg>
