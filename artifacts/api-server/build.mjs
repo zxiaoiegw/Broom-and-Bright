@@ -15,7 +15,16 @@ async function buildAll() {
   await rm(distDir, { recursive: true, force: true });
 
   await esbuild({
-    entryPoints: [path.resolve(artifactDir, "src/index.ts")],
+    entryPoints: [
+      path.resolve(artifactDir, "src/index.ts"),
+      // Bundled separately (without the app.listen(...) side effect from
+      // index.ts) so Vercel's serverless entrypoint (api/index.js) can
+      // import a single self-contained file with no unresolved relative
+      // imports — Vercel runs source files directly via Node's native
+      // TypeScript support rather than bundling them, and Node's strict
+      // ESM resolver can't handle our directory/extensionless imports.
+      path.resolve(artifactDir, "src/app.ts"),
+    ],
     platform: "node",
     bundle: true,
     format: "esm",
