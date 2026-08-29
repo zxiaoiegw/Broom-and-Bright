@@ -25,6 +25,7 @@ async function buildAll() {
       // ESM resolver can't handle our directory/extensionless imports.
       path.resolve(artifactDir, "src/app.ts"),
     ],
+    tsconfig: path.resolve(artifactDir, "tsconfig.build.json"),
     platform: "node",
     bundle: true,
     format: "esm",
