@@ -51,7 +51,7 @@ export function Hero() {
                 </svg>
               </span>
             </h1>
-            <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed drop-shadow-md">
+            <p className="hidden md:block text-lg md:text-xl text-white/90 mb-8 leading-relaxed drop-shadow-md">
               Professional, reliable, and detail-oriented cleaning services for homes, apartments, and businesses across greater Kansas City.
             </p>
 
