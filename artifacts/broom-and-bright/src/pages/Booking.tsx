@@ -2,7 +2,7 @@ import Cal, { getCalApi } from '@calcom/embed-react';
 import { useEffect } from 'react';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/sections/Footer';
-import { Shield, CheckCircle, Star } from 'lucide-react';
+import { CheckCircle, Star } from 'lucide-react';
 import { useDocumentHead } from '@/hooks/useDocumentHead';
 
 export default function Booking() {
@@ -38,7 +38,6 @@ export default function Booking() {
 
           {/* Trust strip */}
           <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-600 font-medium mb-10">
-            <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-primary" /> Insured & Bonded</span>
             <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-primary" /> Background-Checked Staff</span>
             <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-primary" /> Satisfaction Guarantee</span>
           </div>

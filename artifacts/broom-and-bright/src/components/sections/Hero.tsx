@@ -1,4 +1,4 @@
-import { Shield, CheckCircle, Star, Phone } from 'lucide-react';
+import { CheckCircle, Star, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
@@ -61,10 +61,6 @@ export function Hero() {
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/90 font-medium drop-shadow-md">
-              <div className="flex items-center gap-2">
-                <Shield className="w-5 h-5 text-[#8fc3d4]" />
-                <span>Insured & Bonded</span>
-              </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-[#8fc3d4]" />
                 <span>Background-Checked</span>
