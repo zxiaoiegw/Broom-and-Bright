@@ -40,7 +40,7 @@ export function FAQ() {
   const ref = useScrollReveal();
 
   return (
-    <section id="faq" className="py-24 bg-white">
+    <section id="faq" className="pt-16 pb-24 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>

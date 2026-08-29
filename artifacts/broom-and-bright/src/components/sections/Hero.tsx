@@ -19,17 +19,15 @@ export function Hero() {
   const phonePill = (
     <a
       href="tel:+17858291574"
-      className="flex items-center justify-center gap-3 h-11 lg:h-14 px-6 rounded-full bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all"
+      className="flex items-center justify-center gap-2 h-11 lg:h-14 px-4 text-white/90 hover:text-white transition-colors"
     >
-      <span className="flex items-center justify-center w-9 h-9 rounded-full bg-teal-50 text-primary shrink-0">
-        <Phone className="w-4 h-4" />
-      </span>
-      <span className="text-base font-semibold text-slate-900">(785) 829-1574</span>
+      <Phone className="w-4 h-4" />
+      <span className="text-base lg:text-xl font-semibold underline underline-offset-4 decoration-white/40">(785) 829-1574</span>
     </a>
   );
 
   return (
-    <section className="pb-16 md:pb-24 overflow-hidden">
+    <section className="overflow-hidden">
       {/* Full-bleed hero image with heading/CTA overlaid */}
       <div ref={imageRef} className="relative w-full pt-20 md:pt-24">
         <img
@@ -37,7 +35,7 @@ export function Hero() {
           alt="TrueClean KC team member cleaning a kitchen countertop"
           className="w-full h-[65vh] md:h-[70vh] lg:h-[85vh] max-h-[800px] min-h-[480px] object-cover"
         />
-        <div className="absolute left-0 right-0 bottom-0 top-20 md:top-24 bg-linear-to-t from-black/75 via-black/25 to-transparent" />
+        <div className="absolute left-0 right-0 bottom-0 top-20 md:top-24 bg-linear-to-t from-black/80 via-black/45 to-black/10" />
 
         <div
           ref={contentRef}
@@ -45,7 +43,7 @@ export function Hero() {
         >
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-6 drop-shadow-md">
-              Professional House <span>Clening Services in</span> <br className="hidden md:block" />
+              Professional House <span>Cleaning Services in</span> <br className="hidden md:block" />
               <span className="text-[#8fc3d4] relative inline-block">
                 Overland Park.
                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-[#8fc3d4]-200/60 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
@@ -57,7 +55,7 @@ export function Hero() {
               Professional, reliable, and detail-oriented cleaning services for homes, apartments, and businesses across greater Kansas City.
             </p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mb-6">
               {instantQuoteButton}
               {phonePill}
             </div>

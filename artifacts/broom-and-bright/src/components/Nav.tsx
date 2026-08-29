@@ -60,6 +60,12 @@ export function Nav() {
                   {label}
                 </a>
               ))}
+              <Link
+                href="/free-quote"
+                className="text-base font-bold text-slate-600 hover:text-primary transition-colors"
+              >
+                Free Quote
+              </Link>
             </div>
             <Button
               asChild
@@ -114,6 +120,13 @@ export function Nav() {
               {label}
             </a>
           ))}
+          <Link
+            href="/free-quote"
+            className="text-base font-medium text-slate-700 py-2 border-b border-slate-50"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Free Quote
+          </Link>
           {/* <Button
             asChild
             size="lg"

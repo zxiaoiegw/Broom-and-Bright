@@ -4,7 +4,7 @@
   <defs>
     <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#081748"/>
-      <stop offset="50%" stop-color="#0C2367"/>
+      <stop offset="50%" stop-color="#000000"/>
       <stop offset="100%" stop-color="#5B8DEF"/>
     </linearGradient>
     <linearGradient id="yellowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
