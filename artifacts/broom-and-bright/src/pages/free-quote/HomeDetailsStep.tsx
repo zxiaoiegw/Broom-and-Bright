@@ -10,14 +10,24 @@ interface HomeDetailsStepProps {
   photos: File[];
   photoErrors: string | null;
   onPhotoChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onPhotoDrop: (e: React.DragEvent<HTMLElement>) => void;
+  onPhotoDragOver: (e: React.DragEvent<HTMLElement>) => void;
   onRemovePhoto: (index: number) => void;
 }
 
-export function HomeDetailsStep({ form, photos, photoErrors, onPhotoChange, onRemovePhoto }: HomeDetailsStepProps) {
+export function HomeDetailsStep({
+  form,
+  photos,
+  photoErrors,
+  onPhotoChange,
+  onPhotoDrop,
+  onPhotoDragOver,
+  onRemovePhoto,
+}: HomeDetailsStepProps) {
   return (
     <>
       <div>
-        <h2 className="text-lg font-bold text-slate-900">Home details</h2>
+        <h2 className="text-lg font-bold text-slate-900">Property details</h2>
         <p className="text-sm text-slate-600">Helps us estimate time and crew size.</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -34,14 +44,14 @@ export function HomeDetailsStep({ form, photos, photoErrors, onPhotoChange, onRe
                     <button
                       type="button"
                       onClick={() => field.onChange(Math.max(1, field.value - 1))}
-                      className="w-8 h-8 rounded-md border border-input bg-teal-50 text-primary font-bold hover-elevate"
+                      className="w-8 h-8 rounded-md border border-input bg-[#6ba4b8]/10 text-[#6ba4b8] font-bold hover-elevate"
                     >
                       −
                     </button>
                     <button
                       type="button"
                       onClick={() => field.onChange(Math.min(10, field.value + 1))}
-                      className="w-8 h-8 rounded-md border border-input bg-teal-50 text-primary font-bold hover-elevate"
+                      className="w-8 h-8 rounded-md border border-input bg-[#6ba4b8]/10 text-[#6ba4b8] font-bold hover-elevate"
                     >
                       +
                     </button>
@@ -65,14 +75,14 @@ export function HomeDetailsStep({ form, photos, photoErrors, onPhotoChange, onRe
                     <button
                       type="button"
                       onClick={() => field.onChange(Math.max(1, field.value - 1))}
-                      className="w-8 h-8 rounded-md border border-input bg-teal-50 text-primary font-bold hover-elevate"
+                      className="w-8 h-8 rounded-md border border-input bg-[#6ba4b8]/10 text-[#6ba4b8] font-bold hover-elevate"
                     >
                       −
                     </button>
                     <button
                       type="button"
                       onClick={() => field.onChange(Math.min(10, field.value + 1))}
-                      className="w-8 h-8 rounded-md border border-input bg-teal-50 text-primary font-bold hover-elevate"
+                      className="w-8 h-8 rounded-md border border-input bg-[#6ba4b8]/10 text-[#6ba4b8] font-bold hover-elevate"
                     >
                       +
                     </button>
@@ -99,7 +109,7 @@ export function HomeDetailsStep({ form, photos, photoErrors, onPhotoChange, onRe
                     className={cn(
                       'flex-1 h-11 rounded-md text-sm font-bold flex items-center justify-center gap-1.5 border',
                       field.value === 'yes'
-                        ? 'border-primary bg-teal-50 text-primary'
+                        ? 'border-[#6ba4b8] bg-[#6ba4b8]/10 text-[#6ba4b8]'
                         : 'border-input bg-transparent text-slate-600',
                     )}
                   >
@@ -112,7 +122,7 @@ export function HomeDetailsStep({ form, photos, photoErrors, onPhotoChange, onRe
                     className={cn(
                       'flex-1 h-11 rounded-md text-sm font-semibold border',
                       field.value === 'no'
-                        ? 'border-primary bg-teal-50 text-primary'
+                        ? 'border-[#6ba4b8] bg-[#6ba4b8]/10 text-[#6ba4b8]'
                         : 'border-input bg-transparent text-slate-600',
                     )}
                   >
@@ -161,7 +171,11 @@ export function HomeDetailsStep({ form, photos, photoErrors, onPhotoChange, onRe
           </div>
         )}
 
-        <label className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-teal-200 bg-teal-50/60 rounded-2xl h-28 cursor-pointer text-sm text-primary hover:border-primary transition-colors">
+        <label
+          onDragOver={onPhotoDragOver}
+          onDrop={onPhotoDrop}
+          className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-[#6ba4b8]/40 bg-[#6ba4b8]/10 rounded-2xl h-28 cursor-pointer text-sm text-[#6ba4b8] hover:border-[#6ba4b8] transition-colors"
+        >
           <Upload className="w-6 h-6" />
           <span className="font-semibold">Drag &amp; drop photos, or click to browse</span>
           <span className="text-xs text-slate-400 font-normal">JPG or PNG, up to 5MB each</span>

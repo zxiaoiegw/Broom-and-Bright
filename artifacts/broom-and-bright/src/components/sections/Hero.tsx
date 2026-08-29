@@ -1,4 +1,4 @@
-import { Shield, CheckCircle, Star, Users, Phone } from 'lucide-react';
+import { Shield, CheckCircle, Star, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
@@ -45,43 +45,37 @@ export function Hero() {
         >
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-6 drop-shadow-md">
-              Come home to <br className="hidden md:block" />
+              Professional House <span>Clening Services in</span> <br className="hidden md:block" />
               <span className="text-[#8fc3d4] relative inline-block">
-                bright, clean spaces.
+                Overland Park.
                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-[#8fc3d4]-200/60 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
                 </svg>
               </span>
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed drop-shadow-md">
-              We're the cleaning service that earns a spare key. Trustworthy, meticulous, and dedicated to making your home feel like a breath of fresh air.
+              Professional, reliable, and detail-oriented cleaning services for homes, apartments, and businesses across greater Kansas City.
             </p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
               {instantQuoteButton}
               {phonePill}
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div className="container-wide mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-slate-700 font-medium max-w-xl mx-auto pt-10 md:pt-14">
-          <div className="flex items-center justify-center gap-2">
-            <Shield className="w-5 h-5 text-primary" />
-            <span>Insured & Bonded</span>
-          </div>
-          <div className="flex items-center justify-center gap-2">
-            <CheckCircle className="w-5 h-5 text-primary" />
-            <span>Background-Checked</span>
-          </div>
-          <div className="flex items-center justify-center gap-2">
-            <Star className="w-5 h-5 text-primary" />
-            <span>Satisfaction Guarantee</span>
-          </div>
-          <div className="flex items-center justify-center gap-2">
-            <Users className="w-5 h-5 text-primary" />
-            <span>500+ Homes Cleaned</span>
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/90 font-medium drop-shadow-md">
+              <div className="flex items-center gap-2">
+                <Shield className="w-5 h-5 text-[#8fc3d4]" />
+                <span>Insured & Bonded</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-[#8fc3d4]" />
+                <span>Background-Checked</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Star className="w-5 h-5 text-[#8fc3d4]" />
+                <span>Satisfaction Guarantee</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

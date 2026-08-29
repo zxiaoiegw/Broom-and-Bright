@@ -7,25 +7,40 @@ export function usePhotoUpload() {
   const [photos, setPhotos] = useState<File[]>([]);
   const [photoErrors, setPhotoErrors] = useState<string | null>(null);
 
-  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files ?? []);
-
+  const addFiles = (files: File[]) => {
     // Silent trim: oversized files just get dropped, no message.
     const sizeOk = files.filter((f) => f.size <= MAX_SIZE);
-    const combined = [...photos, ...sizeOk];
-
-    if (combined.length > MAX_PHOTOS) {
-      setPhotoErrors(`You can only upload up to ${MAX_PHOTOS} photos.`);
-      setPhotos(combined.slice(0, MAX_PHOTOS));
-    } else {
+    setPhotos((prev) => {
+      const combined = [...prev, ...sizeOk];
+      if (combined.length > MAX_PHOTOS) {
+        setPhotoErrors(`You can only upload up to ${MAX_PHOTOS} photos.`);
+        return combined.slice(0, MAX_PHOTOS);
+      }
       setPhotoErrors(null);
-      setPhotos(combined);
-    }
+      return combined;
+    });
+  };
+
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    addFiles(Array.from(e.target.files ?? []));
+    // Reset so selecting the same file again still fires onChange.
+    e.target.value = '';
+  };
+
+  const handlePhotoDrop = (e: React.DragEvent<HTMLElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const files = Array.from(e.dataTransfer.files ?? []).filter((f) => f.type.startsWith('image/'));
+    addFiles(files);
+  };
+
+  const handleDragOver = (e: React.DragEvent<HTMLElement>) => {
+    e.preventDefault();
   };
 
   const removePhoto = (index: number) => {
     setPhotos((prev) => prev.filter((_, i) => i !== index));
   };
 
-  return { photos, photoErrors, handlePhotoChange, removePhoto };
+  return { photos, photoErrors, handlePhotoChange, handlePhotoDrop, handleDragOver, removePhoto };
 }

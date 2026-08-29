@@ -15,7 +15,7 @@ export function ServiceArea() {
   const ref = useScrollReveal();
 
   return (
-    <section className="py-24 bg-white border-b border-slate-100">
+    <section id="service-area" className="py-24 bg-white border-b border-slate-100">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row gap-12 items-center justify-between">
           <div className="md:w-1/2 max-w-lg">

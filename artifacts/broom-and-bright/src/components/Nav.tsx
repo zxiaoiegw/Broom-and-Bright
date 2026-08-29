@@ -6,9 +6,10 @@ import { Link, useLocation } from "wouter";
 
 const SECTIONS = [
   { label: "Services", hash: "services" },
-  { label: "Pricing", hash: "pricing" },
   { label: "How It Works", hash: "how-it-works" },
+  { label: "Service Areas", hash: "service-area" },
   { label: "FAQ", hash: "faq" },
+  { label: "Contact Us", hash: "contact" },
 ];
 
 export function Nav() {
@@ -43,7 +44,7 @@ export function Nav() {
             <img
               src={logoUrl}
               alt="TrueClean KC"
-              className="h-12 md:h-14 w-auto group-hover:opacity-80 transition-opacity"
+              className="h-14 md:h-16 w-auto group-hover:opacity-80 transition-opacity"
             />
           </Link>
 
@@ -54,7 +55,7 @@ export function Nav() {
                 <a
                   key={label}
                   href={sectionHref(hash)}
-                  className="text-sm font-medium text-slate-600 hover:text-primary transition-colors"
+                  className="text-base font-bold text-slate-600 hover:text-primary transition-colors"
                 >
                   {label}
                 </a>

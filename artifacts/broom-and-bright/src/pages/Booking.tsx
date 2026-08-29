@@ -32,7 +32,7 @@ export default function Booking() {
               Book Your Cleaning
             </h1>
             <p className="text-lg text-slate-600 max-w-xl mx-auto">
-              Pick a time that works for you. Payment is collected securely at booking via Stripe — no surprises.
+              Pick a time that works for you. Payment is collected securely at booking via Stripe.
             </p>
           </div>
 

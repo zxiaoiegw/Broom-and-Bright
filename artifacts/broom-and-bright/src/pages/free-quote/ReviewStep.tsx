@@ -1,8 +1,16 @@
 import type { UseFormReturn } from 'react-hook-form';
-import { FormField, FormControl, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Textarea } from '@/components/ui/textarea';
+import { Mail, MessageSquare, Phone } from 'lucide-react';
+import { FormField, FormControl, FormItem, FormMessage } from '@/components/ui/form';
+import { cn } from '@/lib/utils';
 import type { FreeQuoteFormValues } from './schema';
-import { SERVICE_TYPES, ADD_ONS, getServicePrice } from './pricing';
+import { SERVICE_TYPES, ADD_ONS, FREQUENCIES, getQuoteBreakdown } from './pricing';
+import { PriceDisclaimer } from './PriceDisclaimer';
+
+const CONTACT_METHODS = [
+  { key: 'email', label: 'Email', icon: Mail },
+  { key: 'message', label: 'Text Message', icon: MessageSquare },
+  { key: 'phoneCall', label: 'Phone Call', icon: Phone },
+] as const;
 
 interface ReviewStepProps {
   form: UseFormReturn<FreeQuoteFormValues>;
@@ -12,15 +20,19 @@ interface ReviewStepProps {
 
 export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
   const values = form.watch();
-  const basePrice = values.serviceType ? getServicePrice(values.bedrooms, values.serviceType) : null;
-  const addonsTotal = ADD_ONS.filter((a) => values.addons?.includes(a.key)).reduce((sum, a) => sum + a.price, 0);
-  const estimatedTotal = basePrice !== null ? basePrice + addonsTotal : null;
+  const frequency = FREQUENCIES.find((f) => f.key === values.frequency);
+  const { basePrice, addonsTotal, discountPercent, discountAmount, total } = getQuoteBreakdown({
+    bedrooms: values.bedrooms,
+    serviceType: values.serviceType,
+    addons: values.addons ?? [],
+    frequency: values.frequency,
+  });
 
   return (
     <>
       <div>
         <h2 className="text-lg font-bold text-slate-900">Review your request</h2>
-        <p className="text-sm text-slate-600">Take a look, then send it our way.</p>
+        {/* <p className="text-sm text-slate-600">Take a look, then send it our way.</p> */}
       </div>
 
       <div className="rounded-2xl border border-slate-100 overflow-hidden divide-y divide-slate-100">
@@ -34,7 +46,7 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
               {values.email} &nbsp;·&nbsp; {values.phone}
             </div>
           </div>
-          <button type="button" onClick={() => onEditStep(0)} className="text-xs font-semibold text-primary shrink-0">
+          <button type="button" onClick={() => onEditStep(0)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
             Edit
           </button>
         </div>
@@ -43,24 +55,24 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
           <div>
             <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Address</div>
             <div className="text-sm font-semibold text-slate-900">
-              {values.street}, {values.city}, {values.state} {values.zip}
+              {values.address}
             </div>
           </div>
-          <button type="button" onClick={() => onEditStep(0)} className="text-xs font-semibold text-primary shrink-0">
+          <button type="button" onClick={() => onEditStep(0)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
             Edit
           </button>
         </div>
 
         <div className="flex justify-between items-start p-4 bg-slate-50">
           <div>
-            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Home Details</div>
+            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Property Details</div>
             <div className="text-sm font-semibold text-slate-900">
               {values.bedrooms} bed &nbsp;·&nbsp; {values.bathrooms} bath &nbsp;·&nbsp; ~
               {values.squareFeet} sqft &nbsp;·&nbsp; {values.pets === 'yes' ? 'Has pets' : 'No pets'}
             </div>
             {photos.length > 0 && <div className="text-xs text-slate-600">{photos.length} photo(s) attached</div>}
           </div>
-          <button type="button" onClick={() => onEditStep(1)} className="text-xs font-semibold text-primary shrink-0">
+          <button type="button" onClick={() => onEditStep(1)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
             Edit
           </button>
         </div>
@@ -68,13 +80,18 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
         <div className="flex justify-between items-start p-4">
           <div className="space-y-1.5">
             <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Service</div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <span className="text-sm font-semibold text-slate-900">
                 {SERVICE_TYPES.find((s) => s.key === values.serviceType)?.label}
               </span>
-              <span className="text-xs font-semibold text-primary bg-teal-50 px-2 py-0.5 rounded-full">
+              <span className="text-xs font-semibold text-[#6ba4b8] bg-[#6ba4b8]/10 px-2 py-0.5 rounded-full">
                 {basePrice !== null ? `from $${basePrice}` : 'Custom Quote'}
               </span>
+              {values.frequency && (
+                <span className="text-xs text-slate-500">
+                  {FREQUENCIES.find((f) => f.key === values.frequency)?.label}
+                </span>
+              )}
             </div>
             {values.addons.length > 0 && (
               <div className="flex flex-wrap gap-1.5">
@@ -84,7 +101,7 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
                   return (
                     <span
                       key={key}
-                      className="text-[11px] font-semibold text-primary bg-teal-50 border border-teal-200 px-2 py-0.5 rounded-full"
+                      className="text-[11px] font-semibold text-[#6ba4b8] bg-[#6ba4b8]/10 border border-[#6ba4b8]/40 px-2 py-0.5 rounded-full"
                     >
                       {addon.label} +${addon.price}
                     </span>
@@ -93,12 +110,12 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
               </div>
             )}
           </div>
-          <button type="button" onClick={() => onEditStep(2)} className="text-xs font-semibold text-primary shrink-0">
+          <button type="button" onClick={() => onEditStep(2)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
             Edit
           </button>
         </div>
 
-        <div className="flex flex-col gap-1.5 p-4 bg-teal-50">
+        <div className="flex flex-col gap-1.5 p-4 bg-[#6ba4b8]/10">
           <div className="flex justify-between items-center text-xs text-slate-600">
             <span>{SERVICE_TYPES.find((s) => s.key === values.serviceType)?.label}</span>
             <span>{basePrice !== null ? `from $${basePrice}` : 'Custom Quote'}</span>
@@ -109,35 +126,59 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
               <span>+${addonsTotal}</span>
             </div>
           )}
-          <div className="h-px bg-teal-200 my-0.5" />
+          {discountPercent > 0 && frequency && basePrice !== null && (
+            <div className="flex justify-between items-center text-xs font-semibold text-[#6ba4b8]">
+              <span>{Math.round(discountPercent * 100)}% Off Applied</span>
+              <span>-${discountAmount}</span>
+            </div>
+          )}
+          <div className="h-px bg-[#6ba4b8]/25 my-0.5" />
           <div className="flex justify-between items-center">
             <span className="text-sm font-bold text-slate-900">Estimated total</span>
-            <span className="text-lg font-extrabold text-primary">
-              {estimatedTotal !== null ? `from $${estimatedTotal}` : 'Custom Quote'}
+            <span className="text-lg font-extrabold text-[#6ba4b8]">
+              {total !== null ? `from $${total}` : 'Custom Quote'}
             </span>
           </div>
-          {basePrice === null && (
+          {basePrice === null ? (
             <p className="text-xs text-slate-500">
               Homes with 5+ bedrooms are priced individually — we'll follow up with a number.
             </p>
+          ) : (
+            <PriceDisclaimer />
           )}
         </div>
       </div>
 
       <FormField
         control={form.control}
-        name="additionalNotes"
+        name="preferredContact"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>
-              Additional Notes <span className="font-normal text-slate-400">(optional)</span>
-            </FormLabel>
+            <div>
+              <div className="text-sm font-bold text-slate-900">How should we reach you?</div>
+              <p className="text-xs text-slate-600">Pick how you'd like us to follow up with your quote.</p>
+            </div>
             <FormControl>
-              <Textarea
-                {...field}
-                placeholder="Anything we should know — gate codes, areas to focus on..."
-                className="min-h-20 resize-none"
-              />
+              <div className="grid grid-cols-3 gap-3">
+                {CONTACT_METHODS.map((method) => {
+                  const selected = field.value === method.key;
+                  const Icon = method.icon;
+                  return (
+                    <button
+                      key={method.key}
+                      type="button"
+                      onClick={() => field.onChange(method.key)}
+                      className={cn(
+                        'flex flex-col items-center justify-center gap-2 rounded-2xl px-3 py-4 border-[1.5px] text-sm font-semibold text-center',
+                        selected ? 'border-[#6ba4b8] bg-[#6ba4b8]/10 text-[#6ba4b8]' : 'border-slate-200 bg-white text-slate-600',
+                      )}
+                    >
+                      <Icon className="w-5 h-5" />
+                      {method.label}
+                    </button>
+                  );
+                })}
+              </div>
             </FormControl>
             <FormMessage />
           </FormItem>

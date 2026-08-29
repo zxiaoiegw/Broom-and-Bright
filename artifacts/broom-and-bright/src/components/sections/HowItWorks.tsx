@@ -1,11 +1,16 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { MousePointerClick, CalendarCheck, Sparkles, Star } from 'lucide-react';
+import { Calculator, MousePointerClick, CalendarCheck, Sparkles, Star } from 'lucide-react';
 
 const steps = [
   {
+    icon: Calculator,
+    title: 'Get Your Quote',
+    description: 'Answer a few quick questions and get an instant price — no phone calls needed.',
+  },
+  {
     icon: MousePointerClick,
     title: 'Book Online',
-    description: 'Select your service, choose a time, and book in under 2 minutes.',
+    description: 'Pick a time that works for you, and book in under 1 minute.',
   },
   {
     icon: CalendarCheck,
@@ -33,7 +38,7 @@ export function HowItWorks() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Effortlessly simple</h2>
           <p className="text-lg text-slate-600">
-            We’ve removed the friction from hiring a cleaner. No lengthy phone estimates, no waiting for callbacks.
+            We've removed the friction from hiring a cleaner. Get an instant quote and book online — no phone calls, no waiting for callbacks.
           </p>
         </div>
 
@@ -41,7 +46,7 @@ export function HowItWorks() {
           {/* Connecting line (desktop) */}
           <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-slate-200" />
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 relative z-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 relative z-10">
             {steps.map((step, index) => (
               <div key={index} className="text-center relative">
                 <div className="w-24 h-24 mx-auto bg-white rounded-full shadow-lg flex items-center justify-center mb-6 relative border-4 border-slate-50">

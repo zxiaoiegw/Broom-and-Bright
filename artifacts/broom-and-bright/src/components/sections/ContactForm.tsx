@@ -82,7 +82,7 @@ export function ContactForm() {
     }`;
 
   return (
-    <section className="py-24 bg-slate-900 text-white relative">
+    <section id="contact" className="py-24 bg-slate-900 text-white relative">
       <div className="container mx-auto px-4 md:px-6">
         <div ref={ref} className="max-w-4xl mx-auto bg-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl border border-slate-700 grid md:grid-cols-5 gap-12 items-center">
           
@@ -119,7 +119,7 @@ export function ContactForm() {
                     id="name" type="text" autoComplete="name"
                     value={fields.name} onChange={set('name')}
                     aria-required="true" aria-describedby={errors.name ? 'name-error' : undefined}
-                    className={fieldClass(!!errors.name)} placeholder="Jane Doe"
+                    className={fieldClass(!!errors.name)} placeholder=""
                   />
                   {errors.name && (
                     <p id="name-error" role="alert" className="text-xs text-red-500 mt-0.5">{errors.name}</p>
@@ -130,7 +130,7 @@ export function ContactForm() {
                   <input
                     id="phone" type="tel" autoComplete="tel"
                     value={fields.phone} onChange={set('phone')}
-                    className={fieldClass(false)} placeholder="(555) 000-0000"
+                    className={fieldClass(false)} placeholder=""
                   />
                 </div>
               </div>
@@ -143,7 +143,7 @@ export function ContactForm() {
                   id="email" type="email" autoComplete="email"
                   value={fields.email} onChange={set('email')}
                   aria-required="true" aria-describedby={errors.email ? 'email-error' : undefined}
-                  className={fieldClass(!!errors.email)} placeholder="jane@example.com"
+                  className={fieldClass(!!errors.email)} placeholder=""
                 />
                 {errors.email && (
                   <p id="email-error" role="alert" className="text-xs text-red-500 mt-0.5">{errors.email}</p>

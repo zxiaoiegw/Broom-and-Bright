@@ -18,12 +18,21 @@ router.post("/quote-requests", upload.array("photos"), async(req, res) => {
     bathrooms,
     pets,
     squareFeet,
+    frequency,
     serviceType,
     addons,
     additionalNotes,
     estimatedTotal,
+    preferredContact,
   } = req.body;
   const files = (req.files as Express.Multer.File[]) ?? [];
+
+  const CONTACT_METHOD_LABELS: Record<string, string> = {
+    email: "Email",
+    message: "Text Message",
+    phoneCall: "Phone Call",
+  };
+  const preferredContactLabel = CONTACT_METHOD_LABELS[preferredContact] ?? preferredContact;
 
   try {
     const { error } = await resend.emails.send({
@@ -33,9 +42,11 @@ router.post("/quote-requests", upload.array("photos"), async(req, res) => {
         html: `<p><strong>Name:</strong> ${firstName} ${lastName}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Preferred Contact Method:</strong> ${preferredContactLabel}</p>
             <p><strong>Address:</strong> ${address}</p>
             <p><strong>Bedrooms/Bathrooms/SqFt:</strong> ${bedrooms} / ${bathrooms} / ${squareFeet}</p>
             <p><strong>Pets:</strong> ${pets}</p>
+            <p><strong>Frequency:</strong> ${frequency}</p>
             <p><strong>Service Type:</strong> ${serviceType}</p>
             <p><strong>Add-ons:</strong> ${addons || "None"}</p>
             <p><strong>Estimated Total:</strong> from $${estimatedTotal}</p>

@@ -3,7 +3,7 @@ import type { UseFormReturn } from 'react-hook-form';
 import { FormField, FormControl, FormItem, FormMessage } from '@/components/ui/form';
 import { cn } from '@/lib/utils';
 import type { FreeQuoteFormValues } from './schema';
-import { SERVICE_TYPES, ADD_ONS, getPricingTier, getServicePrice } from './pricing';
+import { SERVICE_TYPES, ADD_ONS, FREQUENCIES, getPricingTier, getServicePrice } from './pricing';
 
 export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues> }) {
   const values = form.watch();
@@ -14,12 +14,9 @@ export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues>
       <div>
         <h2 className="text-lg font-bold text-slate-900">Choose your cleaning</h2>
         <p className="text-sm text-slate-600">
-          Pick a service type, then add anything extra.{' '}
-          {pricingTier ? (
-            <span>Pricing shown for a {pricingTier.sizeLabel} home.</span>
-          ) : (
-            <span>5+ bedroom homes get a custom quote.</span>
-          )}
+          Pricing shown for {values.bedrooms} bed,{' '}
+          {values.bathrooms} bath, ~{values.squareFeet} sqft{values.pets === 'yes' ? ', with pets' : ''} home
+          {pricingTier ? '' : ' — 5+ bedroom homes get a custom quote'}.
         </p>
       </div>
 
@@ -46,29 +43,29 @@ export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues>
                       className={cn(
                         'relative rounded-2xl p-5 flex flex-col gap-3 cursor-pointer border-[1.5px]',
                         selected
-                          ? 'border-primary bg-teal-50 shadow-lg shadow-teal-900/10'
+                          ? 'border-[#6ba4b8] bg-[#6ba4b8]/10 shadow-lg shadow-[#6ba4b8]/20'
                           : 'border-slate-200 bg-white',
                       )}
                     >
                       {selected && (
-                        <div className="absolute top-4 right-4 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                        <div className="absolute top-4 right-4 w-5 h-5 rounded-full bg-[#6ba4b8] flex items-center justify-center">
                           <Check className="w-3 h-3 text-white" strokeWidth={4} />
                         </div>
                       )}
                       <div
                         className={cn(
                           'w-9 h-9 rounded-lg flex items-center justify-center',
-                          selected ? 'bg-white' : 'bg-teal-50',
+                          selected ? 'bg-white' : 'bg-[#6ba4b8]/10',
                         )}
                       >
-                        <Icon className="w-[18px] h-[18px] text-primary" />
+                        <Icon className="w-[18px] h-[18px] text-[#6ba4b8]" />
                       </div>
                       <div>
                         <div className="text-sm font-bold text-slate-900">{service.label}</div>
                         <div
                           className={cn(
                             'text-xs font-semibold',
-                            selected ? 'text-primary' : 'text-slate-400',
+                            selected ? 'text-[#6ba4b8]' : 'text-slate-400',
                           )}
                         >
                           {price !== null ? `from $${price}` : 'Custom Quote'}
@@ -80,7 +77,7 @@ export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues>
                             <span
                               className={cn(
                                 'w-1 h-1 rounded-full mt-1.5 shrink-0',
-                                selected ? 'bg-primary' : 'bg-slate-400',
+                                selected ? 'bg-[#6ba4b8]' : 'bg-slate-400',
                               )}
                             />
                             {item}
@@ -126,14 +123,14 @@ export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues>
                         }
                         className={cn(
                           'flex items-center justify-between gap-2 h-12 rounded-xl px-3 border-[1.5px] text-left',
-                          selected ? 'border-primary bg-teal-50' : 'border-slate-200 bg-white',
+                          selected ? 'border-[#6ba4b8] bg-[#6ba4b8]/10' : 'border-slate-200 bg-white',
                         )}
                       >
                         <div className="flex items-center gap-2 min-w-0">
                           <div
                             className={cn(
                               'w-[18px] h-[18px] rounded flex items-center justify-center shrink-0',
-                              selected ? 'bg-primary' : 'border-[1.5px] border-slate-200',
+                              selected ? 'bg-[#6ba4b8]' : 'border-[1.5px] border-slate-200',
                             )}
                           >
                             {selected && <Check className="w-2.5 h-2.5 text-white" strokeWidth={4} />}
@@ -141,14 +138,14 @@ export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues>
                           <span
                             className={cn(
                               'text-xs font-semibold leading-tight',
-                              selected ? 'text-primary' : 'text-slate-600',
+                              selected ? 'text-[#6ba4b8]' : 'text-slate-600',
                             )}
                           >
                             {addon.label}
                           </span>
                         </div>
                         <span
-                          className={cn('text-xs font-bold shrink-0', selected ? 'text-primary' : 'text-slate-400')}
+                          className={cn('text-xs font-bold shrink-0', selected ? 'text-[#6ba4b8]' : 'text-slate-400')}
                         >
                           +${addon.price}
                         </span>
@@ -161,6 +158,48 @@ export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues>
           )}
         />
       </div>
+
+      <div className="pt-4 border-t border-slate-100">
+        <h2 className="text-lg font-bold text-slate-900">How often?</h2>
+        <p className="text-sm text-slate-600">Discounts offered with recurring services.</p>
+      </div>
+
+      <FormField
+        control={form.control}
+        name="frequency"
+        render={({ field }) => (
+          <FormItem>
+            <FormControl>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {FREQUENCIES.map((freq) => {
+                  const selected = field.value === freq.key;
+                  return (
+                    <div
+                      key={freq.key}
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => field.onChange(freq.key)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') field.onChange(freq.key);
+                      }}
+                      className={cn(
+                        'relative rounded-2xl px-4 py-5 flex flex-col items-center text-center gap-1 cursor-pointer border-[1.5px]',
+                        selected ? 'border-[#6ba4b8] bg-[#6ba4b8]/10' : 'border-slate-200 bg-white',
+                      )}
+                    >
+                      <div className={cn('text-sm font-bold', selected ? 'text-[#6ba4b8]' : 'text-slate-900')}>
+                        {freq.label}
+                      </div>
+                      <div className="text-xs text-slate-500">{freq.sub}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
     </>
   );
 }
