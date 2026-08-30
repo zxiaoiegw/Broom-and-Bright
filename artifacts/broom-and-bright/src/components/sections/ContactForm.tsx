@@ -190,7 +190,7 @@ export function ContactForm() {
                 <p role="alert" className="text-sm font-medium text-red-500 text-center">{submitError}</p>
               )}
 
-              <Button type="submit" disabled={isSubmitting} className="w-full rounded-full h-12 mt-auto text-black font-bold border-2 border-primary bg-transparent">
+              <Button type="submit" disabled={isSubmitting} className="w-full h-12 mt-auto text-black font-bold border-2 border-primary bg-transparent">
                 <Send className="w-5 h-5 mr-2" /> {isSubmitting ? 'Sending…' : 'Send Message'}
               </Button>
             </form>

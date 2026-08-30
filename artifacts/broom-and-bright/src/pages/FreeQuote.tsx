@@ -174,7 +174,7 @@ export default function FreeQuote() {
                       {/* Navigation */}
                       <div className="flex justify-between items-center pt-2">
                         {step > 0 ? (
-                          <Button type="button" variant="outline" size="lg" onClick={goBack} className="rounded-full">
+                          <Button type="button" variant="outline" size="lg" onClick={goBack}>
                             <ChevronLeft className="w-4 h-4" />
                             Back
                           </Button>
@@ -187,7 +187,6 @@ export default function FreeQuote() {
                             key="next"
                             type="button"
                             size="lg"
-                            className="rounded-full"
                             disabled={!canGoNext}
                             onClick={goNext}
                           >
@@ -195,7 +194,7 @@ export default function FreeQuote() {
                             <ChevronRight className="w-4 h-4" />
                           </Button>
                         ) : (
-                          <Button key="submit" type="submit" size="lg" className="rounded-full" disabled={!canSubmit}>
+                          <Button key="submit" type="submit" size="lg" disabled={!canSubmit}>
                             {isSubmitting ? 'Sending...' : 'Submit Your Request'}
                           </Button>
                         )}

@@ -57,7 +57,7 @@ export function ServiceArea() {
                 aria-label="ZIP code"
                 className="flex-1 h-12 px-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#6ba4b8]/20 focus:border-[#6ba4b8] transition-all"
               />
-              <Button type="submit" className="h-12 rounded-xl px-6 shrink-0 text-black border-transparent">
+              <Button type="submit" className="h-12 px-6 shrink-0 text-black border-transparent">
                 <Search className="w-4 h-4" />
                 Check
               </Button>

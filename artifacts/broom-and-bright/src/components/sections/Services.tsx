@@ -97,7 +97,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       </div>
 
       <Button asChild className="w-full rounded-full h-12 mt-auto border-2 border-primary bg-transparent text-black font-bold group-hover:bg-primary/10">
-        <Link href="/booking">Schedule Today</Link>
+        <Link href="/booking">Schedule Now</Link>
       </Button>
     </div>
   );

@@ -10,7 +10,7 @@ export function Hero() {
   const instantQuoteButton = (
     <Button
       asChild
-      className="rounded-full h-11 px-6 text-sm lg:h-14 lg:px-6 lg:text-base lg:rounded-full text-black border-transparent shadow-lg hover:shadow-xl transition-all"
+      className="h-13 px-6 text-base font-semibold lg:h-14 lg:px-6 lg:text-base text-black border-transparent shadow-lg hover:shadow-xl transition-all"
     >
       <Link href="/free-quote">FREE INSTANT QUOTE</Link>
     </Button>

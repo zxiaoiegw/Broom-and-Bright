@@ -14,7 +14,7 @@ export function SuccessScreen({ firstName }: { firstName: string }) {
       <p className="text-slate-600 mb-8">
         Thanks, {firstName} — we'll follow up with your request soon.
       </p>
-      <Button asChild size="lg" className="rounded-full text-black">
+      <Button asChild size="lg" className="text-black">
         <Link href="/booking">
           <CalendarCheck className="w-4 h-4" />
           Schedule your cleaning

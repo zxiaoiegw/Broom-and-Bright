@@ -70,9 +70,9 @@ export function Nav() {
             <Button
               asChild
               size="lg"
-              className="rounded-full px-5 text-black border-primary bg-primary/80 shadow-sm hover:shadow-md transition-all"
+              className="h-10 px-5 text-base font-medium text-black border-primary bg-primary/80 shadow-sm hover:shadow-md transition-all"
             >
-              <Link href="/booking">Schedule Today</Link>
+              <Link href="/booking">Schedule Now</Link>
             </Button>
           </div>
 
@@ -81,9 +81,9 @@ export function Nav() {
             <Button
               asChild
               size="lg"
-              className="rounded-full px-5 text-black border-primary bg-primary/80 shadow-sm hover:shadow-md transition-all"
+              className="h-10 px-5 text-base font-medium text-black border-primary bg-primary/80 shadow-sm hover:shadow-md transition-all"
             >
-              <Link href="/booking">Schedule Today</Link>
+              <Link href="/booking">Schedule Now</Link>
             </Button>
             {/* <a
               href="tel:+17858291574"
