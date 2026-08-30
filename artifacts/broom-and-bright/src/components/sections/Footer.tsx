@@ -1,4 +1,4 @@
-import logoUrl from "@assets/logo.svg";
+import { Logo } from "@/components/Logo";
 import { Link } from "wouter";
 
 export function Footer() {
@@ -8,11 +8,7 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
             <Link href="/" className="mb-6 group inline-flex items-center">
-              <img
-                src={logoUrl}
-                alt="TrueClean KC"
-                className="h-14 w-auto brightness-0 invert group-hover:opacity-80 transition-opacity"
-              />
+              <Logo variant="light" className="group-hover:opacity-80 transition-opacity" />
             </Link>
             <p className="max-w-md text-slate-400 mb-6 leading-relaxed">
               The cleaning service that earns a spare key. Professional,

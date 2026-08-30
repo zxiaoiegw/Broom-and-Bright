@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
-import logoUrl from "@assets/logo.svg";
+import { Logo } from "@/components/Logo";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
 
@@ -41,11 +41,7 @@ export function Nav() {
       <div className="container-wide mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center group">
-            <img
-              src={logoUrl}
-              alt="TrueClean KC"
-              className="h-14 md:h-16 w-auto group-hover:opacity-80 transition-opacity"
-            />
+            <Logo className="group-hover:opacity-80 transition-opacity" />
           </Link>
 
           {/* Desktop Nav */}
