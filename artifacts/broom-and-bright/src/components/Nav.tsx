@@ -74,13 +74,6 @@ export function Nav() {
 
           {/* Mobile: phone number + menu toggle */}
           <div className="md:hidden flex items-center gap-3">
-            <Button
-              asChild
-              size="lg"
-              className="h-10 px-5 text-base font-medium text-black border-primary bg-primary/80 shadow-sm hover:shadow-md transition-all"
-            >
-              <Link href="/booking">Schedule Now</Link>
-            </Button>
             {/* <a
               href="tel:+17858291574"
               className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 whitespace-nowrap"
@@ -123,14 +116,15 @@ export function Nav() {
           >
             Free Quote
           </Link>
-          {/* <Button
+          <Button
             asChild
             size="lg"
-            className="w-full mt-2 rounded-full"
-            onClick={() => setIsMobileMenuOpen(false)}
+            className="w-full mt-2 h-10 text-base font-medium text-black border-primary bg-primary/80 shadow-sm hover:shadow-md transition-all"
           >
-            <Link href="/booking">Book a Cleaning</Link>
-          </Button> */}
+            <Link href="/booking" onClick={() => setIsMobileMenuOpen(false)}>
+              Schedule Now
+            </Link>
+          </Button>
         </div>
       )}
     </nav>
