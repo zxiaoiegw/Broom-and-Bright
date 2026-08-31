@@ -90,8 +90,12 @@ function Calendar({
           defaultClassNames.weekday,
         ),
         // Gap between day cells so each date reads as its own rounded badge
-        // instead of a solid, edge-to-edge block of color.
-        week: cn('mt-1.5 flex w-full gap-1', defaultClassNames.week),
+        // instead of a solid, edge-to-edge block of color. Explicit h-[--cell-size]
+        // (not just the day cells' own aspect-square) because Safari doesn't
+        // reliably count an aspect-ratio box's height toward an ancestor flex
+        // column's auto-height — without it, the last week row can render past
+        // this card's bottom edge and overlap whatever follows on iOS Safari.
+        week: cn('mt-1.5 flex h-[--cell-size] w-full gap-1', defaultClassNames.week),
         week_number_header: cn(
           'w-[--cell-size] select-none',
           defaultClassNames.week_number_header,
