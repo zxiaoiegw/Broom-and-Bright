@@ -94,14 +94,26 @@ export function ScheduleStep({ durationMinutes, value, onChange, heading }: Sche
         <p className="text-sm text-slate-600">Choose a day, then an available start time.</p>
       </div>
 
-      {/* On iOS Safari specifically, this calendar's last week row can render
-          past its own card's bottom edge instead of pushing the time-slot
-          panel below it (a WebKit auto-height quirk we couldn't fully pin
-          down/reproduce outside real Safari). gap-24 on mobile forces enough
-          clearance that the two can never visually collide regardless of the
-          exact miscalculation; lg:gap-6 keeps the tighter desktop spacing,
-          where the two sit side by side and this doesn't happen. */}
-      <div className="flex flex-col lg:flex-row gap-24 lg:gap-6 items-start transform-gpu">
+      {/* On iOS Safari specifically, this calendar's card can come up short of
+          its real content height — a 5- or 6-week month's last row(s) render
+          past the card's own bottom edge instead of the card growing to fit
+          them, and the time-slot panel below can start too early too (a
+          WebKit auto-height quirk we couldn't fully pin down/reproduce
+          outside real Safari — Chromium renders this correctly at every
+          month/width we tried). Rather than pad every browser's layout for a
+          bug only WebKit-on-iOS has, `supports-[-webkit-touch-callout:none]`
+          scopes both guardrails to iOS Safari/Chrome/Firefox specifically
+          (they all use WebKit there; nothing else supports that property) —
+          desktop and Android keep the tight, unpadded layout. `max-lg:` keeps
+          it to the stacked mobile layout; the lg: side-by-side layout never
+          showed this. Both are keyed off --cell-size so they track the
+          mobile cell size automatically:
+            - min-h-[calc(...)] on the card: generously sized for the longest
+              possible month (6 week rows + caption/weekday rows), so the
+              card's frame fully encloses its rows even if under-measured.
+            - gap-28 between the card and the time-slot panel: clearance
+              beyond that, so even a still-overflowing row can't reach it. */}
+      <div className="flex flex-col lg:flex-row gap-6 items-start transform-gpu max-lg:supports-[-webkit-touch-callout:none]:gap-28">
         <div className="w-full lg:w-auto lg:shrink-0 lg:min-w-[420px]">
           <Calendar
             mode="single"
@@ -115,7 +127,7 @@ export function ScheduleStep({ durationMinutes, value, onChange, heading }: Sche
             disabled={(date) =>
               date < startOfToday() || (availableDates !== null && !availableDates.has(toDateKey(date)))
             }
-            className="rounded-2xl border border-slate-200 w-full p-4 sm:p-6 [--cell-size:3rem] lg:[--cell-size:4rem]"
+            className="rounded-2xl border border-slate-200 w-full p-4 sm:p-6 [--cell-size:3rem] lg:[--cell-size:4rem] max-lg:supports-[-webkit-touch-callout:none]:min-h-[calc(var(--cell-size)*9)]"
             classNames={{ root: 'w-full' }}
           />
         </div>
