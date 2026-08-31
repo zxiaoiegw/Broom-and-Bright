@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Calendar } from '@/components/ui/calendar';
 import { cn } from '@/lib/utils';
 import { API_URL } from '@/lib/api';
@@ -39,6 +39,42 @@ export function ScheduleStep({ durationMinutes, value, onChange, heading }: Sche
   // null while the visible month's availability hasn't loaded yet — days
   // stay clickable in the meantime rather than flashing "unavailable".
   const [availableDates, setAvailableDates] = useState<Set<string> | null>(null);
+
+  // On iOS Safari specifically, the calendar card's own auto-height can come
+  // up short of its actual day-grid content — a 5- or 6-week month's last
+  // row(s) render past the card's bottom border instead of the card growing
+  // to enclose them (a WebKit quirk we could reproduce on-device but not in
+  // Chromium at any width/month we tried, which made guessing a fixed CSS
+  // height unreliable — an earlier attempt undershot, the next overshot).
+  // So: measure it. Compare the card's actual rendered bottom edge to its
+  // day-grid table's actual rendered bottom edge, and if the table hangs
+  // past the card, pad the card by exactly that much — correct on whatever
+  // device/month this turns out to affect, with zero guessing and zero
+  // effect on browsers where the two already match.
+  const calendarWrapRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const wrap = calendarWrapRef.current;
+    if (!wrap) return;
+
+    const measure = () => {
+      const card = wrap.querySelector<HTMLElement>('[data-slot="calendar"]');
+      const table = wrap.querySelector('table');
+      if (!card || !table) return;
+
+      const deficit = table.getBoundingClientRect().bottom - card.getBoundingClientRect().bottom;
+      if (deficit > 0) {
+        const needed = card.offsetHeight + deficit + 16; // +16 to match the card's own bottom padding
+        if (needed > parseFloat(card.style.minHeight || '0')) {
+          card.style.minHeight = `${Math.ceil(needed)}px`;
+        }
+      }
+    };
+
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(wrap);
+    return () => ro.disconnect();
+  }, [visibleMonth]);
 
   useEffect(() => {
     let cancelled = false;
@@ -94,27 +130,8 @@ export function ScheduleStep({ durationMinutes, value, onChange, heading }: Sche
         <p className="text-sm text-slate-600">Choose a day, then an available start time.</p>
       </div>
 
-      {/* On iOS Safari specifically, this calendar's card can come up short of
-          its real content height — a 5- or 6-week month's last row(s) render
-          past the card's own bottom edge instead of the card growing to fit
-          them, and the time-slot panel below can start too early too (a
-          WebKit auto-height quirk we couldn't fully pin down/reproduce
-          outside real Safari — Chromium renders this correctly at every
-          month/width we tried). Rather than pad every browser's layout for a
-          bug only WebKit-on-iOS has, `supports-[-webkit-touch-callout:none]`
-          scopes both guardrails to iOS Safari/Chrome/Firefox specifically
-          (they all use WebKit there; nothing else supports that property) —
-          desktop and Android keep the tight, unpadded layout. `max-lg:` keeps
-          it to the stacked mobile layout; the lg: side-by-side layout never
-          showed this. Both are keyed off --cell-size so they track the
-          mobile cell size automatically:
-            - min-h-[calc(...)] on the card: generously sized for the longest
-              possible month (6 week rows + caption/weekday rows), so the
-              card's frame fully encloses its rows even if under-measured.
-            - gap-28 between the card and the time-slot panel: clearance
-              beyond that, so even a still-overflowing row can't reach it. */}
-      <div className="flex flex-col lg:flex-row gap-6 items-start transform-gpu max-lg:supports-[-webkit-touch-callout:none]:gap-28">
-        <div className="w-full lg:w-auto lg:shrink-0 lg:min-w-[420px]">
+      <div className="flex flex-col lg:flex-row gap-10 lg:gap-6 items-start transform-gpu">
+        <div ref={calendarWrapRef} className="w-full lg:w-auto lg:shrink-0 lg:min-w-[420px]">
           <Calendar
             mode="single"
             selected={selectedDate}
@@ -127,7 +144,7 @@ export function ScheduleStep({ durationMinutes, value, onChange, heading }: Sche
             disabled={(date) =>
               date < startOfToday() || (availableDates !== null && !availableDates.has(toDateKey(date)))
             }
-            className="rounded-2xl border border-slate-200 w-full p-4 sm:p-6 [--cell-size:3rem] lg:[--cell-size:4rem] max-lg:supports-[-webkit-touch-callout:none]:min-h-[calc(var(--cell-size)*9)]"
+            className="rounded-2xl border border-slate-200 w-full p-4 sm:p-6 [--cell-size:3rem] lg:[--cell-size:4rem]"
             classNames={{ root: 'w-full' }}
           />
         </div>
