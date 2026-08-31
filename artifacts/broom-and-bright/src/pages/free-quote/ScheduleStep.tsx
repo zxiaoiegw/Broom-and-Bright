@@ -94,7 +94,12 @@ export function ScheduleStep({ durationMinutes, value, onChange, heading }: Sche
         <p className="text-sm text-slate-600">Choose a day, then an available start time.</p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-6 items-start">
+      {/* transform-gpu forces its own compositing layer — works around an iOS
+          Safari bug where this flex column doesn't reflow the time-slot panel
+          (added below the calendar once its data-slot fetch resolves), so the
+          panel briefly renders overlapping the calendar's last row instead of
+          stacking under it. No visual effect on other browsers. */}
+      <div className="flex flex-col lg:flex-row gap-6 items-start transform-gpu">
         <div className="w-full lg:w-auto lg:shrink-0 lg:min-w-[420px]">
           <Calendar
             mode="single"
