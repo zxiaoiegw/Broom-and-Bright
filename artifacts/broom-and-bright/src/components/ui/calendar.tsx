@@ -84,12 +84,14 @@ function Calendar({
           defaultClassNames.caption_label,
         ),
         table: 'w-full border-collapse',
-        weekdays: cn('flex', defaultClassNames.weekdays),
+        weekdays: cn('flex gap-1', defaultClassNames.weekdays),
         weekday: cn(
           'text-muted-foreground flex-1 select-none rounded-md text-[0.8rem] font-normal',
           defaultClassNames.weekday,
         ),
-        week: cn('mt-2 flex w-full', defaultClassNames.week),
+        // Gap between day cells so each date reads as its own rounded badge
+        // instead of a solid, edge-to-edge block of color.
+        week: cn('mt-1.5 flex w-full gap-1', defaultClassNames.week),
         week_number_header: cn(
           'w-[--cell-size] select-none',
           defaultClassNames.week_number_header,
@@ -108,8 +110,10 @@ function Calendar({
         ),
         range_middle: cn('rounded-none', defaultClassNames.range_middle),
         range_end: cn('bg-accent rounded-r-md', defaultClassNames.range_end),
+        // A small dot under today's date instead of a filled background —
+        // stays visible (in white) if today also happens to be selected.
         today: cn(
-          'bg-accent text-accent-foreground rounded-md data-[selected=true]:rounded-none',
+          'relative font-semibold text-slate-900 after:absolute after:bottom-1 after:left-1/2 after:h-1 after:w-1 after:-translate-x-1/2 after:rounded-full after:bg-[#6ba4b8] data-[selected-single=true]:after:bg-white',
           defaultClassNames.today,
         ),
         outside: cn(
@@ -190,6 +194,7 @@ function CalendarDayButton({
       variant="ghost"
       size="icon"
       data-day={day.date.toLocaleDateString()}
+      data-available={!modifiers.disabled}
       data-selected-single={
         modifiers.selected &&
         !modifiers.range_start &&
@@ -200,7 +205,13 @@ function CalendarDayButton({
       data-range-end={modifiers.range_end}
       data-range-middle={modifiers.range_middle}
       className={cn(
-        'data-[selected-single=true]:bg-primary data-[selected-single=true]:text-primary-foreground data-[range-middle=true]:bg-accent data-[range-middle=true]:text-accent-foreground data-[range-start=true]:bg-primary data-[range-start=true]:text-primary-foreground data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-ring/50 flex aspect-square h-auto w-full min-w-[--cell-size] flex-col gap-1 font-normal leading-none data-[range-end=true]:rounded-md data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-md group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:ring-[3px] [&>span]:text-xs [&>span]:opacity-70',
+        // Only genuinely bookable dates get the light gray fill (driven by
+        // our own data-available flag, not the :disabled pseudo-class —
+        // react-day-picker doesn't reliably set the native disabled
+        // attribute on every unavailable day). Days off / fully booked days
+        // stay plain white. Selected date is a darker gray, not the yellow
+        // brand color, so it reads as "picked" rather than "call to action".
+        'rounded-lg data-[available=true]:bg-slate-100 hover:data-[available=true]:bg-slate-200 data-[selected-single=true]:bg-slate-700 data-[selected-single=true]:text-white hover:data-[selected-single=true]:bg-slate-700 data-[range-middle=true]:bg-accent data-[range-middle=true]:text-accent-foreground data-[range-start=true]:bg-slate-700 data-[range-start=true]:text-white data-[range-end=true]:bg-slate-700 data-[range-end=true]:text-white group-data-[focused=true]/day:border-ring group-data-[focused=true]/day:ring-ring/50 flex aspect-square h-auto w-full min-w-[--cell-size] flex-col gap-1 font-normal leading-none data-[range-end=true]:rounded-lg data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-lg group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:ring-[3px] [&>span]:text-xs [&>span]:opacity-70',
         defaultClassNames.day,
         className,
       )}

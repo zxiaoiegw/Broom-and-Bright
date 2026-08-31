@@ -17,7 +17,7 @@ export function Nav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [location] = useLocation();
 
-  // When on a sub-page (e.g. /booking), section links must navigate back to
+  // When on a sub-page (e.g. /free-quote), section links must navigate back to
   // the home page first. We use the Vite BASE_URL so it works in both dev
   // (/broom-and-bright/) and any future deploy path.
   const isHome = location === "/";
@@ -68,7 +68,7 @@ export function Nav() {
               size="lg"
               className="h-10 px-5 text-base font-medium text-black border-primary bg-primary/80 shadow-sm hover:shadow-md transition-all"
             >
-              <Link href="/booking">Schedule Now</Link>
+              <Link href="/free-quote">Book Now</Link>
             </Button>
           </div>
 
@@ -121,8 +121,8 @@ export function Nav() {
             size="lg"
             className="w-full mt-2 h-10 text-base font-medium text-black border-primary bg-primary/80 shadow-sm hover:shadow-md transition-all"
           >
-            <Link href="/booking" onClick={() => setIsMobileMenuOpen(false)}>
-              Schedule Now
+            <Link href="/free-quote" onClick={() => setIsMobileMenuOpen(false)}>
+              Book Now
             </Link>
           </Button>
         </div>

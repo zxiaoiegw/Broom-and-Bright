@@ -24,6 +24,7 @@ async function buildAll() {
       // TypeScript support rather than bundling them, and Node's strict
       // ESM resolver can't handle our directory/extensionless imports.
       path.resolve(artifactDir, "src/app.ts"),
+      path.resolve(artifactDir, "src/scripts/seed-owner.ts"),
     ],
     tsconfig: path.resolve(artifactDir, "tsconfig.build.json"),
     platform: "node",

@@ -3,7 +3,7 @@ import type { UseFormReturn } from 'react-hook-form';
 import { FormField, FormControl, FormItem, FormMessage } from '@/components/ui/form';
 import { cn } from '@/lib/utils';
 import type { FreeQuoteFormValues } from './schema';
-import { SERVICE_TYPES, ADD_ONS, FREQUENCIES, getPricingTier, getServicePrice } from './pricing';
+import { SERVICE_TYPES, ADD_ONS, FREQUENCIES, getPricingTier, getServicePrice, totalBathrooms } from './pricing';
 
 export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues> }) {
   const values = form.watch();
@@ -11,11 +11,12 @@ export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues>
 
   return (
     <>
-      <div>
+      <div className="pt-4 border-t border-slate-100">
         <h2 className="text-lg font-bold text-slate-900">Choose your cleaning</h2>
         <p className="text-sm text-slate-600">
-          Pricing shown for {values.bedrooms} bed,{' '}
-          {values.bathrooms} bath, ~{values.squareFeet} sqft{values.pets === 'yes' ? ', with pets' : ''} home
+          Pricing shown for {values.bedrooms} bed, {values.bathrooms} bath
+          {values.halfBaths > 0 ? `, ${values.halfBaths} half bath` : ''}, ~
+          {values.squareFeet} sqft home
           {pricingTier ? '' : ' — 5+ bedroom homes get a custom quote'}.
         </p>
       </div>
@@ -30,7 +31,12 @@ export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues>
                 {SERVICE_TYPES.map((service) => {
                   const selected = field.value === service.key;
                   const Icon = service.icon;
-                  const price = getServicePrice(values.bedrooms, service.key);
+                  const price = getServicePrice(
+                    values.bedrooms,
+                    totalBathrooms(values.bathrooms, values.halfBaths),
+                    values.squareFeet,
+                    service.key,
+                  );
                   return (
                     <div
                       key={service.key}

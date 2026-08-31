@@ -19,7 +19,6 @@ const services = [
       'Bathrooms cleaned & sanitized',
       'Trash removal',
     ],
-    link: 'https://cal.com/{{CALCOM_USERNAME}}/standard-clean',
   },
   {
     id: 'deep-clean',
@@ -33,7 +32,6 @@ const services = [
       'Inside cabinets',
       'Grout scrubbing',
     ],
-    link: 'https://cal.com/{{CALCOM_USERNAME}}/deep-clean',
   },
   {
     id: 'move-clean',
@@ -47,7 +45,6 @@ const services = [
       'Garage sweep',
       'Final walkthrough',
     ],
-    link: 'https://cal.com/{{CALCOM_USERNAME}}/move-clean',
   },
   {
     id: 'recurring',
@@ -60,7 +57,6 @@ const services = [
       'Discounted rates (10-30% off)',
       'Same trusted cleaner each visit',
     ],
-    link: 'https://cal.com/{{CALCOM_USERNAME}}/recurring',
   },
 ];
 
@@ -97,7 +93,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       </div>
 
       <Button asChild className="w-full rounded-full h-12 mt-auto border-2 border-primary bg-transparent text-black font-bold group-hover:bg-primary/10">
-        <Link href="/booking">Schedule Now</Link>
+        <Link href="/free-quote">Book Now</Link>
       </Button>
     </div>
   );

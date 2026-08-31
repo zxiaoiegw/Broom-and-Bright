@@ -1,10 +1,12 @@
 import type { UseFormReturn } from 'react-hook-form';
 import { Mail, MessageSquare, Phone } from 'lucide-react';
 import { FormField, FormControl, FormItem, FormMessage } from '@/components/ui/form';
+import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
 import type { FreeQuoteFormValues } from './schema';
-import { SERVICE_TYPES, ADD_ONS, FREQUENCIES, getQuoteBreakdown } from './pricing';
+import { SERVICE_TYPES, ADD_ONS, FREQUENCIES, getQuoteBreakdown, totalBathrooms } from './pricing';
 import { PriceDisclaimer } from './PriceDisclaimer';
+import { getCancellationDeadlineLabel } from './cancellationPolicy';
 
 const CONTACT_METHODS = [
   { key: 'email', label: 'Email', icon: Mail },
@@ -23,10 +25,13 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
   const frequency = FREQUENCIES.find((f) => f.key === values.frequency);
   const { basePrice, addonsTotal, discountPercent, discountAmount, total } = getQuoteBreakdown({
     bedrooms: values.bedrooms,
+    bathrooms: totalBathrooms(values.bathrooms, values.halfBaths),
+    squareFeet: values.squareFeet,
     serviceType: values.serviceType,
     addons: values.addons ?? [],
     frequency: values.frequency,
   });
+  const cancellationLabel = getCancellationDeadlineLabel(values.scheduledStartAt);
 
   return (
     <>
@@ -46,7 +51,7 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
               {values.email} &nbsp;·&nbsp; {values.phone}
             </div>
           </div>
-          <button type="button" onClick={() => onEditStep(0)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
+          <button type="button" onClick={() => onEditStep(2)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
             Edit
           </button>
         </div>
@@ -58,7 +63,7 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
               {values.address}
             </div>
           </div>
-          <button type="button" onClick={() => onEditStep(0)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
+          <button type="button" onClick={() => onEditStep(2)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
             Edit
           </button>
         </div>
@@ -67,12 +72,18 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
           <div>
             <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Property Details</div>
             <div className="text-sm font-semibold text-slate-900">
-              {values.bedrooms} bed &nbsp;·&nbsp; {values.bathrooms} bath &nbsp;·&nbsp; ~
-              {values.squareFeet} sqft &nbsp;·&nbsp; {values.pets === 'yes' ? 'Has pets' : 'No pets'}
+              {values.bedrooms} bed &nbsp;·&nbsp; {values.bathrooms} bath
+              {values.halfBaths > 0 && (
+                <>
+                  {' '}
+                  &nbsp;·&nbsp; {values.halfBaths} half bath
+                </>
+              )}{' '}
+              &nbsp;·&nbsp; ~{values.squareFeet} sqft
             </div>
             {photos.length > 0 && <div className="text-xs text-slate-600">{photos.length} photo(s) attached</div>}
           </div>
-          <button type="button" onClick={() => onEditStep(1)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
+          <button type="button" onClick={() => onEditStep(0)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
             Edit
           </button>
         </div>
@@ -110,7 +121,27 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
               </div>
             )}
           </div>
-          <button type="button" onClick={() => onEditStep(2)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
+          <button type="button" onClick={() => onEditStep(0)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
+            Edit
+          </button>
+        </div>
+
+        <div className="flex justify-between items-start p-4 bg-slate-50">
+          <div>
+            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Scheduled Time</div>
+            <div className="text-sm font-semibold text-slate-900">
+              {values.scheduledStartAt
+                ? new Date(values.scheduledStartAt).toLocaleString(undefined, {
+                    weekday: 'long',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: '2-digit',
+                  })
+                : 'Not picked yet'}
+            </div>
+          </div>
+          <button type="button" onClick={() => onEditStep(1)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
             Edit
           </button>
         </div>
@@ -155,8 +186,10 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
         render={({ field }) => (
           <FormItem>
             <div>
-              <div className="text-sm font-bold text-slate-900">How should we reach you?</div>
-              <p className="text-xs text-slate-600">Pick how you'd like us to follow up with your quote.</p>
+              <div className="text-sm font-bold text-slate-900">
+                How should we reach you? <span className="font-normal text-slate-400">(optional)</span>
+              </div>
+              <p className="text-xs text-slate-600">Pick how you'd like us to confirm your booking.</p>
             </div>
             <FormControl>
               <div className="grid grid-cols-3 gap-3">
@@ -179,6 +212,28 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
                   );
                 })}
               </div>
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <FormField
+        control={form.control}
+        name="cancellationPolicyAck"
+        render={({ field }) => (
+          <FormItem>
+            <FormControl>
+              <label className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 cursor-pointer">
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                  className="mt-0.5"
+                />
+                <span className="text-sm text-slate-700">
+                  {cancellationLabel ?? 'Please cancel or reschedule at least 24 hours before your appointment.'}
+                </span>
+              </label>
             </FormControl>
             <FormMessage />
           </FormItem>

@@ -1,8 +1,7 @@
-import { Check, Upload } from 'lucide-react';
+import { Upload } from 'lucide-react';
 import type { UseFormReturn } from 'react-hook-form';
 import { FormField, FormControl, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { cn } from '@/lib/utils';
 import type { FreeQuoteFormValues } from './schema';
 
 interface HomeDetailsStepProps {
@@ -97,37 +96,29 @@ export function HomeDetailsStep({
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <FormField
           control={form.control}
-          name="pets"
+          name="halfBaths"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Do you have pets?</FormLabel>
+              <FormLabel>Half Baths</FormLabel>
               <FormControl>
-                <div className="flex gap-2">
-                  <button
-                    type="button"
-                    onClick={() => field.onChange('yes')}
-                    className={cn(
-                      'flex-1 h-11 rounded-md text-sm font-bold flex items-center justify-center gap-1.5 border',
-                      field.value === 'yes'
-                        ? 'border-[#6ba4b8] bg-[#6ba4b8]/10 text-[#6ba4b8]'
-                        : 'border-input bg-transparent text-slate-600',
-                    )}
-                  >
-                    {field.value === 'yes' && <Check className="w-3.5 h-3.5" strokeWidth={3} />}
-                    Yes
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => field.onChange('no')}
-                    className={cn(
-                      'flex-1 h-11 rounded-md text-sm font-semibold border',
-                      field.value === 'no'
-                        ? 'border-[#6ba4b8] bg-[#6ba4b8]/10 text-[#6ba4b8]'
-                        : 'border-input bg-transparent text-slate-600',
-                    )}
-                  >
-                    No
-                  </button>
+                <div className="flex items-center justify-between h-11 rounded-md border border-input pl-4 pr-1.5 shadow-sm">
+                  <span className="text-sm font-semibold">{field.value}</span>
+                  <div className="flex gap-1">
+                    <button
+                      type="button"
+                      onClick={() => field.onChange(Math.max(0, field.value - 1))}
+                      className="w-8 h-8 rounded-md border border-input bg-[#6ba4b8]/10 text-[#6ba4b8] font-bold hover-elevate"
+                    >
+                      −
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => field.onChange(Math.min(10, field.value + 1))}
+                      className="w-8 h-8 rounded-md border border-input bg-[#6ba4b8]/10 text-[#6ba4b8] font-bold hover-elevate"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
               </FormControl>
               <FormMessage />

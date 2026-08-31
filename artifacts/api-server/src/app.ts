@@ -1,8 +1,10 @@
 import express, { type Express } from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import { pinoHttp } from "pino-http";
 import router from "./routes";
 import { logger } from "./lib/logger";
+import { attachStaff } from "./lib/auth";
 
 const app: Express = express();
 
@@ -25,9 +27,20 @@ app.use(
     },
   }),
 );
-app.use(cors());
+// `origin: true` reflects the request's Origin header instead of `*`, which
+// is required for cookies (credentials) to work cross-origin — the frontend
+// and this API are served from different domains. Lock this down to your
+// real domain(s) via CORS_ORIGIN once you're off localhost for good.
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(",") : true,
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(attachStaff);
 
 app.use("/api", router);
 

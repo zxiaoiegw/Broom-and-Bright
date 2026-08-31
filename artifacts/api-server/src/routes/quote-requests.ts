@@ -9,6 +9,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 router.post("/quote-requests", upload.array("photos"), async(req, res) => {
   const {
+    serviceMode = "standard",
     firstName,
     lastName,
     email,
@@ -16,11 +17,12 @@ router.post("/quote-requests", upload.array("photos"), async(req, res) => {
     address,
     bedrooms,
     bathrooms,
-    pets,
+    halfBaths,
     squareFeet,
     frequency,
     serviceType,
     addons,
+    hours,
     additionalNotes,
     estimatedTotal,
     preferredContact,
@@ -34,23 +36,34 @@ router.post("/quote-requests", upload.array("photos"), async(req, res) => {
   };
   const preferredContactLabel = CONTACT_METHOD_LABELS[preferredContact] ?? preferredContact;
 
-  try {
-    const { error } = await resend.emails.send({
-        from: "TrueClean KC Website <onboarding@resend.dev>",
-        to: process.env.QUOTE_NOTIFICATION_EMAIL!,
-        subject: `Free Quote Request from ${firstName} ${lastName}`,
-        html: `<p><strong>Name:</strong> ${firstName} ${lastName}</p>
+  const isHourly = serviceMode === "hourly";
+
+  const contactBlock = `<p><strong>Name:</strong> ${firstName} ${lastName}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Phone:</strong> ${phone}</p>
             <p><strong>Preferred Contact Method:</strong> ${preferredContactLabel}</p>
-            <p><strong>Address:</strong> ${address}</p>
+            <p><strong>Address:</strong> ${address}</p>`;
+
+  const detailsBlock = isHourly
+    ? `<p><strong>Service:</strong> Hourly service</p>
+            <p><strong>Man hours requested:</strong> ${hours}</p>
+            <p><strong>Estimated Total:</strong> $${estimatedTotal}</p>
+            <p><strong>Notes:</strong> ${additionalNotes ?? ""}</p>`
+    : `<p><strong>Service:</strong> Standard package</p>
             <p><strong>Bedrooms/Bathrooms/SqFt:</strong> ${bedrooms} / ${bathrooms} / ${squareFeet}</p>
-            <p><strong>Pets:</strong> ${pets}</p>
+            <p><strong>Half Baths:</strong> ${halfBaths}</p>
             <p><strong>Frequency:</strong> ${frequency}</p>
             <p><strong>Service Type:</strong> ${serviceType}</p>
             <p><strong>Add-ons:</strong> ${addons || "None"}</p>
             <p><strong>Estimated Total:</strong> from $${estimatedTotal}</p>
-            <p><strong>Notes:</strong> ${additionalNotes ?? ""}</p>`,
+            <p><strong>Notes:</strong> ${additionalNotes ?? ""}</p>`;
+
+  try {
+    const { error } = await resend.emails.send({
+        from: "TrueClean KC Website <onboarding@resend.dev>",
+        to: process.env.QUOTE_NOTIFICATION_EMAIL!,
+        subject: `${isHourly ? "Hourly" : "Free"} Quote Request from ${firstName} ${lastName}`,
+        html: `${contactBlock}${detailsBlock}`,
         attachments: files.map((file) => ({
         filename: file.originalname,
         content: file.buffer,

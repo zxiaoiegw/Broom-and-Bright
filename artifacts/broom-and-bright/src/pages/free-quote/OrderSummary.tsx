@@ -1,6 +1,6 @@
 import type { UseFormReturn } from 'react-hook-form';
 import type { FreeQuoteFormValues } from './schema';
-import { SERVICE_TYPES, ADD_ONS, FREQUENCIES, getPricingTier, getQuoteBreakdown } from './pricing';
+import { SERVICE_TYPES, ADD_ONS, FREQUENCIES, getPricingTier, getQuoteBreakdown, totalBathrooms } from './pricing';
 import { PriceDisclaimer } from './PriceDisclaimer';
 
 export function OrderSummary({ form }: { form: UseFormReturn<FreeQuoteFormValues> }) {
@@ -12,6 +12,8 @@ export function OrderSummary({ form }: { form: UseFormReturn<FreeQuoteFormValues
 
   const { basePrice, subtotal, discountPercent, discountAmount, total } = getQuoteBreakdown({
     bedrooms: values.bedrooms,
+    bathrooms: totalBathrooms(values.bathrooms, values.halfBaths),
+    squareFeet: values.squareFeet,
     serviceType: values.serviceType,
     addons: values.addons ?? [],
     frequency: values.frequency,

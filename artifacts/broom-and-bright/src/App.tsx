@@ -5,8 +5,9 @@ import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import Home from '@/pages/Home';
-import Booking from '@/pages/Booking';
 import FreeQuote from '@/pages/FreeQuote';
+import StaffLogin from '@/pages/staff/StaffLogin';
+import StaffDashboard from '@/pages/staff/StaffDashboard';
 import {
   Route,
   Switch,
@@ -23,8 +24,9 @@ function Router() {
     <RoutedErrorBoundary>
       <Switch>
         <Route path="/" component={Home} />
-        <Route path="/booking" component={Booking} />
         <Route path="/free-quote" component={FreeQuote} />
+        <Route path="/staff/login" component={StaffLogin} />
+        <Route path="/staff/dashboard" component={StaffDashboard} />
         <Route component={NotFound} />
       </Switch>
     </RoutedErrorBoundary>

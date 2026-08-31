@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     q: 'What is your cancellation policy?',
-    a: 'We ask for at least 24 hours notice to cancel or reschedule. Cancellations with less than 24 hours notice may be subject to a $50 short-notice fee. You can manage your booking directly through Cal.com.',
+    a: 'We ask for at least 24 hours notice to cancel or reschedule. Cancellations with less than 24 hours notice may be subject to a $50 short-notice fee. Just reach out to us directly by phone or email to make a change.',
   },
   {
     q: 'Will my pets be okay during the cleaning?',
@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     q: 'How do I pay?',
-    a: 'Payment is collected securely at the time of booking through Cal.com\'s integrated Stripe checkout. No payment is required before your booking is confirmed.',
+    a: 'Payment is collected at the time of service. No payment is required to submit a quote or confirm your booking.',
   },
 ];
 

@@ -1,11 +1,11 @@
 import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { STEP_LABELS } from './schema';
+import { STANDARD_STEP_LABELS } from './schema';
 
-export function StepIndicator({ step }: { step: number }) {
+export function StepIndicator({ step, labels = STANDARD_STEP_LABELS }: { step: number; labels?: string[] }) {
   return (
     <div className="flex items-center justify-center mb-8">
-      {STEP_LABELS.map((label, i) => (
+      {labels.map((label, i) => (
         <div key={label} className="flex items-center">
           <div className="flex flex-col items-center gap-2 w-20 sm:w-24">
             <div
@@ -29,7 +29,7 @@ export function StepIndicator({ step }: { step: number }) {
               {label}
             </span>
           </div>
-          {i < STEP_LABELS.length - 1 && (
+          {i < labels.length - 1 && (
             <div className={cn('h-0.5 w-8 sm:w-14 mb-6', i < step ? 'bg-[#6ba4b8]' : 'bg-slate-200')} />
           )}
         </div>

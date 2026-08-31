@@ -3,9 +3,8 @@ import type { UseFormReturn } from 'react-hook-form';
 import { FormField, FormControl, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import type { FreeQuoteFormValues } from './schema';
-
-export function ContactStep({ form }: { form: UseFormReturn<FreeQuoteFormValues> }) {
+// Shared by the standard and hourly flows — both schemas carry these contact fields.
+export function ContactStep({ form }: { form: UseFormReturn<any> }) {
   return (
     <>
       <div>
