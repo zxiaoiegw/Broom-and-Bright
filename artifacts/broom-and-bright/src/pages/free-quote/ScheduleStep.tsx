@@ -94,12 +94,14 @@ export function ScheduleStep({ durationMinutes, value, onChange, heading }: Sche
         <p className="text-sm text-slate-600">Choose a day, then an available start time.</p>
       </div>
 
-      {/* transform-gpu forces its own compositing layer — works around an iOS
-          Safari bug where this flex column doesn't reflow the time-slot panel
-          (added below the calendar once its data-slot fetch resolves), so the
-          panel briefly renders overlapping the calendar's last row instead of
-          stacking under it. No visual effect on other browsers. */}
-      <div className="flex flex-col lg:flex-row gap-6 items-start transform-gpu">
+      {/* On iOS Safari specifically, this calendar's last week row can render
+          past its own card's bottom edge instead of pushing the time-slot
+          panel below it (a WebKit auto-height quirk we couldn't fully pin
+          down/reproduce outside real Safari). gap-24 on mobile forces enough
+          clearance that the two can never visually collide regardless of the
+          exact miscalculation; lg:gap-6 keeps the tighter desktop spacing,
+          where the two sit side by side and this doesn't happen. */}
+      <div className="flex flex-col lg:flex-row gap-24 lg:gap-6 items-start transform-gpu">
         <div className="w-full lg:w-auto lg:shrink-0 lg:min-w-[420px]">
           <Calendar
             mode="single"
