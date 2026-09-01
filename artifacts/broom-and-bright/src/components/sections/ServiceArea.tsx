@@ -1,7 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { MapPin, Search, CheckCircle2, XCircle } from 'lucide-react';
 import { Link } from 'wouter';
-import { Button } from '@/components/ui/button';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { SERVICE_AREA_ZIPS, SERVICE_AREA_CITIES } from '@/data/serviceAreaZips';
 
@@ -55,12 +54,15 @@ export function ServiceArea() {
                 }}
                 placeholder="Enter your ZIP code"
                 aria-label="ZIP code"
-                className="flex-1 h-12 px-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#6ba4b8]/20 focus:border-[#6ba4b8] transition-all"
+                className="flex-1 h-12 px-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3fae74]/20 focus:border-[#3fae74] transition-all"
               />
-              <Button type="submit" className="h-12 px-6 shrink-0 text-black border-transparent">
+              <button
+                type="submit"
+                className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-[#3fae74] px-6 text-base font-semibold text-white shadow-[0_14px_26px_-12px_rgba(63,174,116,0.6)] transition-all hover:-translate-y-0.5 hover:bg-[#359a65]"
+              >
                 <Search className="w-4 h-4" />
                 Check
-              </Button>
+              </button>
             </form>
 
             {result === 'found' && match && (
@@ -101,7 +103,7 @@ export function ServiceArea() {
                 {SERVICE_AREA_CITIES.map(({ city, state }) => (
                   <div key={`${city}-${state}`} className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm">
-                      <MapPin className="w-4 h-4 text-[#6ba4b8]" />
+                      <MapPin className="w-4 h-4 text-[#3fae74]" />
                     </div>
                     <span className="text-slate-700 font-medium">
                       {city}, {state}

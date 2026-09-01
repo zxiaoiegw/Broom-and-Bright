@@ -12,9 +12,9 @@ export function StepIndicator({ step, labels = STANDARD_STEP_LABELS }: { step: n
               className={cn(
                 'w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold border-2',
                 i < step
-                  ? 'bg-[#6ba4b8] border-[#6ba4b8] text-white'
+                  ? 'bg-[#3fae74] border-[#3fae74] text-white'
                   : i === step
-                    ? 'bg-[#6ba4b8] border-[#6ba4b8] text-white ring-4 ring-[#6ba4b8]/20'
+                    ? 'bg-[#3fae74] border-[#3fae74] text-white ring-4 ring-[#3fae74]/20'
                     : 'bg-white border-slate-200 text-slate-400',
               )}
             >
@@ -23,14 +23,14 @@ export function StepIndicator({ step, labels = STANDARD_STEP_LABELS }: { step: n
             <span
               className={cn(
                 'text-xs font-semibold text-center',
-                i <= step ? 'text-[#6ba4b8]' : 'text-slate-400',
+                i <= step ? 'text-[#3fae74]' : 'text-slate-400',
               )}
             >
               {label}
             </span>
           </div>
           {i < labels.length - 1 && (
-            <div className={cn('h-0.5 w-8 sm:w-14 mb-6', i < step ? 'bg-[#6ba4b8]' : 'bg-slate-200')} />
+            <div className={cn('h-0.5 w-8 sm:w-14 mb-6', i < step ? 'bg-[#3fae74]' : 'bg-slate-200')} />
           )}
         </div>
       ))}

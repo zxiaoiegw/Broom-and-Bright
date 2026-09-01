@@ -117,7 +117,7 @@ function Calendar({
         // A small dot under today's date instead of a filled background —
         // stays visible (in white) if today also happens to be selected.
         today: cn(
-          'relative font-semibold text-slate-900 after:absolute after:bottom-1 after:left-1/2 after:h-1 after:w-1 after:-translate-x-1/2 after:rounded-full after:bg-[#6ba4b8] data-[selected-single=true]:after:bg-white',
+          'relative font-semibold text-slate-900 after:absolute after:bottom-1 after:left-1/2 after:h-1 after:w-1 after:-translate-x-1/2 after:rounded-full after:bg-[#3fae74] data-[selected-single=true]:after:bg-white',
           defaultClassNames.today,
         ),
         outside: cn(

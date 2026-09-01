@@ -159,7 +159,7 @@ export function ScheduleStep({ durationMinutes, value, onChange, heading }: Sche
           ) : slots.length === 0 ? (
             <p className="text-sm text-slate-500">
               No openings that day — please pick another date, or{' '}
-              <a href="tel:+17858291574" className="font-semibold text-[#6ba4b8] underline underline-offset-2">
+              <a href="tel:+17858291574" className="font-semibold text-[#3fae74] underline underline-offset-2">
                 call us
               </a>{' '}
               for help finding a time.
@@ -176,8 +176,8 @@ export function ScheduleStep({ durationMinutes, value, onChange, heading }: Sche
                     className={cn(
                       'h-8 rounded-lg border text-xs font-semibold',
                       selected
-                        ? 'border-[#6ba4b8] bg-[#6ba4b8]/10 text-[#6ba4b8]'
-                        : 'border-slate-200 bg-white text-slate-700 hover:border-[#6ba4b8]/50',
+                        ? 'border-[#3fae74] bg-[#3fae74]/10 text-[#3fae74]'
+                        : 'border-slate-200 bg-white text-slate-700 hover:border-[#3fae74]/50',
                     )}
                   >
                     {new Date(iso).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}

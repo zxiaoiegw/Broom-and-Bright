@@ -49,29 +49,29 @@ export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues>
                       className={cn(
                         'relative rounded-2xl p-5 flex flex-col gap-3 cursor-pointer border-[1.5px]',
                         selected
-                          ? 'border-[#6ba4b8] bg-[#6ba4b8]/10 shadow-lg shadow-[#6ba4b8]/20'
+                          ? 'border-[#3fae74] bg-[#3fae74]/10 shadow-lg shadow-[#3fae74]/20'
                           : 'border-slate-200 bg-white',
                       )}
                     >
                       {selected && (
-                        <div className="absolute top-4 right-4 w-5 h-5 rounded-full bg-[#6ba4b8] flex items-center justify-center">
+                        <div className="absolute top-4 right-4 w-5 h-5 rounded-full bg-[#3fae74] flex items-center justify-center">
                           <Check className="w-3 h-3 text-white" strokeWidth={4} />
                         </div>
                       )}
                       <div
                         className={cn(
                           'w-9 h-9 rounded-lg flex items-center justify-center',
-                          selected ? 'bg-white' : 'bg-[#6ba4b8]/10',
+                          selected ? 'bg-white' : 'bg-[#3fae74]/10',
                         )}
                       >
-                        <Icon className="w-[18px] h-[18px] text-[#6ba4b8]" />
+                        <Icon className="w-[18px] h-[18px] text-[#3fae74]" />
                       </div>
                       <div>
                         <div className="text-sm font-bold text-slate-900">{service.label}</div>
                         <div
                           className={cn(
                             'text-xs font-semibold',
-                            selected ? 'text-[#6ba4b8]' : 'text-slate-400',
+                            selected ? 'text-[#3fae74]' : 'text-slate-400',
                           )}
                         >
                           {price !== null ? `from $${price}` : 'Custom Quote'}
@@ -83,7 +83,7 @@ export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues>
                             <span
                               className={cn(
                                 'w-1 h-1 rounded-full mt-1.5 shrink-0',
-                                selected ? 'bg-[#6ba4b8]' : 'bg-slate-400',
+                                selected ? 'bg-[#3fae74]' : 'bg-slate-400',
                               )}
                             />
                             {item}
@@ -129,14 +129,14 @@ export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues>
                         }
                         className={cn(
                           'flex items-center justify-between gap-2 h-12 rounded-xl px-3 border-[1.5px] text-left',
-                          selected ? 'border-[#6ba4b8] bg-[#6ba4b8]/10' : 'border-slate-200 bg-white',
+                          selected ? 'border-[#3fae74] bg-[#3fae74]/10' : 'border-slate-200 bg-white',
                         )}
                       >
                         <div className="flex items-center gap-2 min-w-0">
                           <div
                             className={cn(
                               'w-[18px] h-[18px] rounded flex items-center justify-center shrink-0',
-                              selected ? 'bg-[#6ba4b8]' : 'border-[1.5px] border-slate-200',
+                              selected ? 'bg-[#3fae74]' : 'border-[1.5px] border-slate-200',
                             )}
                           >
                             {selected && <Check className="w-2.5 h-2.5 text-white" strokeWidth={4} />}
@@ -144,14 +144,14 @@ export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues>
                           <span
                             className={cn(
                               'text-xs font-semibold leading-tight',
-                              selected ? 'text-[#6ba4b8]' : 'text-slate-600',
+                              selected ? 'text-[#3fae74]' : 'text-slate-600',
                             )}
                           >
                             {addon.label}
                           </span>
                         </div>
                         <span
-                          className={cn('text-xs font-bold shrink-0', selected ? 'text-[#6ba4b8]' : 'text-slate-400')}
+                          className={cn('text-xs font-bold shrink-0', selected ? 'text-[#3fae74]' : 'text-slate-400')}
                         >
                           +${addon.price}
                         </span>
@@ -190,10 +190,10 @@ export function ServiceStep({ form }: { form: UseFormReturn<FreeQuoteFormValues>
                       }}
                       className={cn(
                         'relative rounded-2xl px-4 py-5 flex flex-col items-center text-center gap-1 cursor-pointer border-[1.5px]',
-                        selected ? 'border-[#6ba4b8] bg-[#6ba4b8]/10' : 'border-slate-200 bg-white',
+                        selected ? 'border-[#3fae74] bg-[#3fae74]/10' : 'border-slate-200 bg-white',
                       )}
                     >
-                      <div className={cn('text-sm font-bold', selected ? 'text-[#6ba4b8]' : 'text-slate-900')}>
+                      <div className={cn('text-sm font-bold', selected ? 'text-[#3fae74]' : 'text-slate-900')}>
                         {freq.label}
                       </div>
                       <div className="text-xs text-slate-500">{freq.sub}</div>

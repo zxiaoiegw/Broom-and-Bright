@@ -25,7 +25,7 @@ export function HourlyOrderSummary({ form }: { form: UseFormReturn<HourlyQuoteFo
 
           <div className="flex justify-between items-center">
             <span className="text-sm font-bold text-slate-900">Estimated total</span>
-            <span className="text-xl font-extrabold text-[#6ba4b8]">${total}</span>
+            <span className="text-xl font-extrabold text-[#3fae74]">${total}</span>
           </div>
 
           <p className="text-xs text-slate-400">

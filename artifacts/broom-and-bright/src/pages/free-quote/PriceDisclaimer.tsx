@@ -10,7 +10,7 @@ export function PriceDisclaimer() {
         <PopoverTrigger asChild>
           <button
             type="button"
-            className="shrink-0 text-slate-400 hover:text-[#6ba4b8] transition-colors mt-0.5"
+            className="shrink-0 text-slate-400 hover:text-[#3fae74] transition-colors mt-0.5"
             aria-label="Why might my price change?"
           >
             <Info className="w-3.5 h-3.5" />

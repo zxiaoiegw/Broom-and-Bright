@@ -5,45 +5,32 @@ interface LogoProps {
 }
 
 export function Logo({ variant = "dark", className = "" }: LogoProps) {
-  const ink = variant === "light" ? "#ffffff" : "#1E293B";
-  const accent = variant === "light" ? "#8fc3d4" : "#3FA0C7";
+  const ink = variant === "light" ? "#ffffff" : "#1b1d21";
 
   return (
-    <div className={`inline-flex flex-col items-start ${className}`}>
-      <div className="relative">
-        {/* roof, sitting on top of the wordmark */}
-        <svg
-          viewBox="0 0 60 22"
-          aria-hidden="true"
-          className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 md:w-14 h-auto"
-        >
-          <path
-            d="M3 20 L30 3 L57 20"
-            stroke={accent}
-            strokeWidth="5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-        </svg>
-        <span
-          className="relative block translate-y-1.5 text-[26px] md:text-[32px] leading-none tracking-tight"
-          style={{ fontFamily: "'Quicksand', 'Segoe UI', sans-serif", fontWeight: 700, color: ink }}
-        >
-          True Clean
-        </span>
-      </div>
+    <span className={`inline-flex items-center gap-2.5 ${className}`}>
+      <svg
+        width="26"
+        height="26"
+        viewBox="0 0 26 26"
+        aria-hidden="true"
+        className="shrink-0"
+      >
+        <circle cx="13" cy="13" r="13" fill="#3fae74" />
+        <path
+          d="M13 4 L15 11 L22 13 L15 15 L13 22 L11 15 L4 13 L11 11 Z"
+          fill="#fff"
+        />
+      </svg>
       <span
-        className="text-[10px] md:text-xs mt-1.5"
+        className="text-[1.15rem] md:text-xl font-bold leading-none tracking-[-0.01em]"
         style={{
-          fontFamily: "'Quicksand', 'Segoe UI', sans-serif",
-          fontWeight: 600,
-          letterSpacing: "0.25em",
-          color: accent,
+          fontFamily: "'Bricolage Grotesque', 'Segoe UI', sans-serif",
+          color: ink,
         }}
       >
-        CLEANING SERVICES
+        True Clean
       </span>
-    </div>
+    </span>
   );
 }

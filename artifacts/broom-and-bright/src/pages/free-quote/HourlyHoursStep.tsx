@@ -23,7 +23,7 @@ export function HourlyHoursStep({ form }: { form: UseFormReturn<HourlyQuoteFormV
         <p className="text-sm text-slate-600 mt-1">
           Each hour booked is for one person working for one hour. For larger homes or if you're
           unsure of the hours needed, please{' '}
-          <a href={PHONE_HREF} className="font-semibold text-[#6ba4b8] underline underline-offset-2">
+          <a href={PHONE_HREF} className="font-semibold text-[#3fae74] underline underline-offset-2">
             contact us
           </a>{' '}
           at {PHONE_DISPLAY} and we can help guide you!

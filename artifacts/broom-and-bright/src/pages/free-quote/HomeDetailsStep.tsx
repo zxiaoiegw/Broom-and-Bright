@@ -43,14 +43,14 @@ export function HomeDetailsStep({
                     <button
                       type="button"
                       onClick={() => field.onChange(Math.max(1, field.value - 1))}
-                      className="w-8 h-8 rounded-md border border-input bg-[#6ba4b8]/10 text-[#6ba4b8] font-bold hover-elevate"
+                      className="w-8 h-8 rounded-md border border-input bg-[#3fae74]/10 text-[#3fae74] font-bold hover-elevate"
                     >
                       −
                     </button>
                     <button
                       type="button"
                       onClick={() => field.onChange(Math.min(10, field.value + 1))}
-                      className="w-8 h-8 rounded-md border border-input bg-[#6ba4b8]/10 text-[#6ba4b8] font-bold hover-elevate"
+                      className="w-8 h-8 rounded-md border border-input bg-[#3fae74]/10 text-[#3fae74] font-bold hover-elevate"
                     >
                       +
                     </button>
@@ -74,14 +74,14 @@ export function HomeDetailsStep({
                     <button
                       type="button"
                       onClick={() => field.onChange(Math.max(1, field.value - 1))}
-                      className="w-8 h-8 rounded-md border border-input bg-[#6ba4b8]/10 text-[#6ba4b8] font-bold hover-elevate"
+                      className="w-8 h-8 rounded-md border border-input bg-[#3fae74]/10 text-[#3fae74] font-bold hover-elevate"
                     >
                       −
                     </button>
                     <button
                       type="button"
                       onClick={() => field.onChange(Math.min(10, field.value + 1))}
-                      className="w-8 h-8 rounded-md border border-input bg-[#6ba4b8]/10 text-[#6ba4b8] font-bold hover-elevate"
+                      className="w-8 h-8 rounded-md border border-input bg-[#3fae74]/10 text-[#3fae74] font-bold hover-elevate"
                     >
                       +
                     </button>
@@ -107,14 +107,14 @@ export function HomeDetailsStep({
                     <button
                       type="button"
                       onClick={() => field.onChange(Math.max(0, field.value - 1))}
-                      className="w-8 h-8 rounded-md border border-input bg-[#6ba4b8]/10 text-[#6ba4b8] font-bold hover-elevate"
+                      className="w-8 h-8 rounded-md border border-input bg-[#3fae74]/10 text-[#3fae74] font-bold hover-elevate"
                     >
                       −
                     </button>
                     <button
                       type="button"
                       onClick={() => field.onChange(Math.min(10, field.value + 1))}
-                      className="w-8 h-8 rounded-md border border-input bg-[#6ba4b8]/10 text-[#6ba4b8] font-bold hover-elevate"
+                      className="w-8 h-8 rounded-md border border-input bg-[#3fae74]/10 text-[#3fae74] font-bold hover-elevate"
                     >
                       +
                     </button>
@@ -165,7 +165,7 @@ export function HomeDetailsStep({
         <label
           onDragOver={onPhotoDragOver}
           onDrop={onPhotoDrop}
-          className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-[#6ba4b8]/40 bg-[#6ba4b8]/10 rounded-2xl h-28 cursor-pointer text-sm text-[#6ba4b8] hover:border-[#6ba4b8] transition-colors"
+          className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-[#3fae74]/40 bg-[#3fae74]/10 rounded-2xl h-28 cursor-pointer text-sm text-[#3fae74] hover:border-[#3fae74] transition-colors"
         >
           <Upload className="w-6 h-6" />
           <span className="font-semibold">Drag &amp; drop photos, or click to browse</span>

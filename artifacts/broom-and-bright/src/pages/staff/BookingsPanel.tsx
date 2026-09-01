@@ -154,7 +154,7 @@ export function BookingsPanel({ me, allStaff }: { me: StaffMember; allStaff: Sta
                       })}
                       {' – '}
                       {new Date(b.endAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
-                      <span className="ml-2 text-xs font-semibold text-[#6ba4b8] bg-[#6ba4b8]/10 px-1.5 py-0.5 rounded-full align-middle">
+                      <span className="ml-2 text-xs font-semibold text-[#3fae74] bg-[#3fae74]/10 px-1.5 py-0.5 rounded-full align-middle">
                         {formatDuration(b.startAt, b.endAt)}
                       </span>
                     </div>

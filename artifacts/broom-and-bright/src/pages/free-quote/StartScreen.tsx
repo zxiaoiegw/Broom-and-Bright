@@ -16,10 +16,10 @@ export function StartScreen({ onSelect }: { onSelect: (mode: 'standard' | 'hourl
       <button
         type="button"
         onClick={() => onSelect('standard')}
-        className="w-full text-left rounded-2xl border-[1.5px] border-slate-200 bg-white p-5 flex items-start gap-4 hover:border-[#6ba4b8] hover:bg-[#6ba4b8]/5 transition-colors group"
+        className="w-full text-left rounded-2xl border-[1.5px] border-slate-200 bg-white p-5 flex items-start gap-4 hover:border-[#3fae74] hover:bg-[#3fae74]/5 transition-colors group"
       >
-        <div className="w-11 h-11 rounded-xl bg-[#6ba4b8]/10 flex items-center justify-center shrink-0">
-          <HomeIcon className="w-5 h-5 text-[#6ba4b8]" />
+        <div className="w-11 h-11 rounded-xl bg-[#3fae74]/10 flex items-center justify-center shrink-0">
+          <HomeIcon className="w-5 h-5 text-[#3fae74]" />
         </div>
         <div className="min-w-0">
           <div className="text-sm font-bold text-slate-900">
@@ -30,7 +30,7 @@ export function StartScreen({ onSelect }: { onSelect: (mode: 'standard' | 'hourl
             one-time deep cleans, and move-in / move-out.
           </p>
         </div>
-        <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#6ba4b8] shrink-0 mt-1" />
+        <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#3fae74] shrink-0 mt-1" />
       </button>
 
       <div className="text-center text-xs font-semibold uppercase tracking-wide text-slate-400">or</div>
@@ -38,10 +38,10 @@ export function StartScreen({ onSelect }: { onSelect: (mode: 'standard' | 'hourl
       <button
         type="button"
         onClick={() => onSelect('hourly')}
-        className="w-full text-left rounded-2xl border-[1.5px] border-slate-200 bg-white p-5 flex items-start gap-4 hover:border-[#6ba4b8] hover:bg-[#6ba4b8]/5 transition-colors group"
+        className="w-full text-left rounded-2xl border-[1.5px] border-slate-200 bg-white p-5 flex items-start gap-4 hover:border-[#3fae74] hover:bg-[#3fae74]/5 transition-colors group"
       >
-        <div className="w-11 h-11 rounded-xl bg-[#6ba4b8]/10 flex items-center justify-center shrink-0">
-          <Clock className="w-5 h-5 text-[#6ba4b8]" />
+        <div className="w-11 h-11 rounded-xl bg-[#3fae74]/10 flex items-center justify-center shrink-0">
+          <Clock className="w-5 h-5 text-[#3fae74]" />
         </div>
         <div className="min-w-0">
           <div className="text-sm font-bold text-slate-900">Hourly service</div>
@@ -51,27 +51,27 @@ export function StartScreen({ onSelect }: { onSelect: (mode: 'standard' | 'hourl
             specific task list, a set budget, or only part of the home to cover.
           </p>
         </div>
-        <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#6ba4b8] shrink-0 mt-1" />
+        <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#3fae74] shrink-0 mt-1" />
       </button>
 
       <div className="text-center text-xs font-semibold uppercase tracking-wide text-slate-400">or</div>
 
       <a
         href={PHONE_HREF}
-        className="w-full text-left rounded-2xl border-[1.5px] border-slate-200 bg-white p-5 flex items-start gap-4 hover:border-[#6ba4b8] hover:bg-[#6ba4b8]/5 transition-colors group"
+        className="w-full text-left rounded-2xl border-[1.5px] border-slate-200 bg-white p-5 flex items-start gap-4 hover:border-[#3fae74] hover:bg-[#3fae74]/5 transition-colors group"
       >
-        <div className="w-11 h-11 rounded-xl bg-[#6ba4b8]/10 flex items-center justify-center shrink-0">
-          <Phone className="w-5 h-5 text-[#6ba4b8]" />
+        <div className="w-11 h-11 rounded-xl bg-[#3fae74]/10 flex items-center justify-center shrink-0">
+          <Phone className="w-5 h-5 text-[#3fae74]" />
         </div>
         <div className="min-w-0">
           <div className="text-sm font-bold text-slate-900">Contact us</div>
           <p className="text-xs text-slate-600 mt-1">
             Not sure which fits? Call{' '}
-            <span className="font-semibold text-[#6ba4b8]">{PHONE_DISPLAY}</span> and we'll help you
+            <span className="font-semibold text-[#3fae74]">{PHONE_DISPLAY}</span> and we'll help you
             figure out the right option.
           </p>
         </div>
-        <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#6ba4b8] shrink-0 mt-1" />
+        <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#3fae74] shrink-0 mt-1" />
       </a>
     </div>
   );

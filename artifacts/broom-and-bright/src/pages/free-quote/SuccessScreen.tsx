@@ -155,15 +155,15 @@ export function SuccessScreen({ firstName, scheduledStartAt, booking }: SuccessS
 
   return (
     <div className="text-center py-12">
-      <div className="mx-auto mb-6 w-16 h-16 rounded-full bg-[#6ba4b8]/15 flex items-center justify-center">
-        <div className="w-12 h-12 rounded-full bg-[#6ba4b8] flex items-center justify-center">
+      <div className="mx-auto mb-6 w-16 h-16 rounded-full bg-[#3fae74]/15 flex items-center justify-center">
+        <div className="w-12 h-12 rounded-full bg-[#3fae74] flex items-center justify-center">
           <Check className="w-6 h-6 text-white" strokeWidth={3} />
         </div>
       </div>
       <h2 className="text-2xl font-bold text-slate-900 mb-2">You're booked!</h2>
       <p className="text-slate-600 mb-2">Thanks, {firstName} — we'll see you</p>
       {currentStartAt && (
-        <p className="text-lg font-bold text-[#6ba4b8] mb-6">
+        <p className="text-lg font-bold text-[#3fae74] mb-6">
           {new Date(currentStartAt).toLocaleString(undefined, {
             weekday: 'long',
             month: 'long',

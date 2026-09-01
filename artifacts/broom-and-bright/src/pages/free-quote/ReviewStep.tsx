@@ -51,7 +51,7 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
               {values.email} &nbsp;·&nbsp; {values.phone}
             </div>
           </div>
-          <button type="button" onClick={() => onEditStep(2)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
+          <button type="button" onClick={() => onEditStep(2)} className="text-xs font-semibold text-[#3fae74] shrink-0">
             Edit
           </button>
         </div>
@@ -63,7 +63,7 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
               {values.address}
             </div>
           </div>
-          <button type="button" onClick={() => onEditStep(2)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
+          <button type="button" onClick={() => onEditStep(2)} className="text-xs font-semibold text-[#3fae74] shrink-0">
             Edit
           </button>
         </div>
@@ -83,7 +83,7 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
             </div>
             {photos.length > 0 && <div className="text-xs text-slate-600">{photos.length} photo(s) attached</div>}
           </div>
-          <button type="button" onClick={() => onEditStep(0)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
+          <button type="button" onClick={() => onEditStep(0)} className="text-xs font-semibold text-[#3fae74] shrink-0">
             Edit
           </button>
         </div>
@@ -95,7 +95,7 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
               <span className="text-sm font-semibold text-slate-900">
                 {SERVICE_TYPES.find((s) => s.key === values.serviceType)?.label}
               </span>
-              <span className="text-xs font-semibold text-[#6ba4b8] bg-[#6ba4b8]/10 px-2 py-0.5 rounded-full">
+              <span className="text-xs font-semibold text-[#3fae74] bg-[#3fae74]/10 px-2 py-0.5 rounded-full">
                 {basePrice !== null ? `from $${basePrice}` : 'Custom Quote'}
               </span>
               {values.frequency && (
@@ -112,7 +112,7 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
                   return (
                     <span
                       key={key}
-                      className="text-[11px] font-semibold text-[#6ba4b8] bg-[#6ba4b8]/10 border border-[#6ba4b8]/40 px-2 py-0.5 rounded-full"
+                      className="text-[11px] font-semibold text-[#3fae74] bg-[#3fae74]/10 border border-[#3fae74]/40 px-2 py-0.5 rounded-full"
                     >
                       {addon.label} +${addon.price}
                     </span>
@@ -121,7 +121,7 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
               </div>
             )}
           </div>
-          <button type="button" onClick={() => onEditStep(0)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
+          <button type="button" onClick={() => onEditStep(0)} className="text-xs font-semibold text-[#3fae74] shrink-0">
             Edit
           </button>
         </div>
@@ -141,12 +141,12 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
                 : 'Not picked yet'}
             </div>
           </div>
-          <button type="button" onClick={() => onEditStep(1)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
+          <button type="button" onClick={() => onEditStep(1)} className="text-xs font-semibold text-[#3fae74] shrink-0">
             Edit
           </button>
         </div>
 
-        <div className="flex flex-col gap-1.5 p-4 bg-[#6ba4b8]/10">
+        <div className="flex flex-col gap-1.5 p-4 bg-[#3fae74]/10">
           <div className="flex justify-between items-center text-xs text-slate-600">
             <span>{SERVICE_TYPES.find((s) => s.key === values.serviceType)?.label}</span>
             <span>{basePrice !== null ? `from $${basePrice}` : 'Custom Quote'}</span>
@@ -158,15 +158,15 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
             </div>
           )}
           {discountPercent > 0 && frequency && basePrice !== null && (
-            <div className="flex justify-between items-center text-xs font-semibold text-[#6ba4b8]">
+            <div className="flex justify-between items-center text-xs font-semibold text-[#3fae74]">
               <span>{Math.round(discountPercent * 100)}% Off Applied</span>
               <span>-${discountAmount}</span>
             </div>
           )}
-          <div className="h-px bg-[#6ba4b8]/25 my-0.5" />
+          <div className="h-px bg-[#3fae74]/25 my-0.5" />
           <div className="flex justify-between items-center">
             <span className="text-sm font-bold text-slate-900">Estimated total</span>
-            <span className="text-lg font-extrabold text-[#6ba4b8]">
+            <span className="text-lg font-extrabold text-[#3fae74]">
               {total !== null ? `from $${total}` : 'Custom Quote'}
             </span>
           </div>
@@ -203,7 +203,7 @@ export function ReviewStep({ form, photos, onEditStep }: ReviewStepProps) {
                       onClick={() => field.onChange(method.key)}
                       className={cn(
                         'flex flex-col items-center justify-center gap-2 rounded-2xl px-3 py-4 border-[1.5px] text-sm font-semibold text-center',
-                        selected ? 'border-[#6ba4b8] bg-[#6ba4b8]/10 text-[#6ba4b8]' : 'border-slate-200 bg-white text-slate-600',
+                        selected ? 'border-[#3fae74] bg-[#3fae74]/10 text-[#3fae74]' : 'border-slate-200 bg-white text-slate-600',
                       )}
                     >
                       <Icon className="w-5 h-5" />

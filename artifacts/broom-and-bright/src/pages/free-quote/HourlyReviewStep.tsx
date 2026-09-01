@@ -37,7 +37,7 @@ export function HourlyReviewStep({ form, onEditStep }: HourlyReviewStepProps) {
               Hourly service &nbsp;·&nbsp; {values.hours} {values.hours === 1 ? 'hour' : 'hours'}
             </div>
           </div>
-          <button type="button" onClick={() => onEditStep(0)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
+          <button type="button" onClick={() => onEditStep(0)} className="text-xs font-semibold text-[#3fae74] shrink-0">
             Edit
           </button>
         </div>
@@ -57,7 +57,7 @@ export function HourlyReviewStep({ form, onEditStep }: HourlyReviewStepProps) {
                 : 'Not picked yet'}
             </div>
           </div>
-          <button type="button" onClick={() => onEditStep(1)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
+          <button type="button" onClick={() => onEditStep(1)} className="text-xs font-semibold text-[#3fae74] shrink-0">
             Edit
           </button>
         </div>
@@ -73,22 +73,22 @@ export function HourlyReviewStep({ form, onEditStep }: HourlyReviewStepProps) {
             </div>
             <div className="text-xs text-slate-600 mt-0.5">{values.address}</div>
           </div>
-          <button type="button" onClick={() => onEditStep(2)} className="text-xs font-semibold text-[#6ba4b8] shrink-0">
+          <button type="button" onClick={() => onEditStep(2)} className="text-xs font-semibold text-[#3fae74] shrink-0">
             Edit
           </button>
         </div>
 
-        <div className="flex flex-col gap-1.5 p-4 bg-[#6ba4b8]/10">
+        <div className="flex flex-col gap-1.5 p-4 bg-[#3fae74]/10">
           <div className="flex justify-between items-center text-xs text-slate-600">
             <span>
               {values.hours} {values.hours === 1 ? 'hour' : 'hours'} &times; ${HOURLY_RATE}/hr
             </span>
             <span>${values.hours * HOURLY_RATE}</span>
           </div>
-          <div className="h-px bg-[#6ba4b8]/25 my-0.5" />
+          <div className="h-px bg-[#3fae74]/25 my-0.5" />
           <div className="flex justify-between items-center">
             <span className="text-sm font-bold text-slate-900">Estimated total</span>
-            <span className="text-lg font-extrabold text-[#6ba4b8]">${total}</span>
+            <span className="text-lg font-extrabold text-[#3fae74]">${total}</span>
           </div>
           <p className="text-xs text-slate-500">
             Flat ${HOURLY_RATE}/hour, one cleaner per hour — final time may vary based on your home's
@@ -120,7 +120,7 @@ export function HourlyReviewStep({ form, onEditStep }: HourlyReviewStepProps) {
                       onClick={() => field.onChange(method.key)}
                       className={cn(
                         'flex flex-col items-center justify-center gap-2 rounded-2xl px-3 py-4 border-[1.5px] text-sm font-semibold text-center',
-                        selected ? 'border-[#6ba4b8] bg-[#6ba4b8]/10 text-[#6ba4b8]' : 'border-slate-200 bg-white text-slate-600',
+                        selected ? 'border-[#3fae74] bg-[#3fae74]/10 text-[#3fae74]' : 'border-slate-200 bg-white text-slate-600',
                       )}
                     >
                       <Icon className="w-5 h-5" />

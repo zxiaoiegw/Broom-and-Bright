@@ -56,10 +56,10 @@ export function OrderSummary({ form }: { form: UseFormReturn<FreeQuoteFormValues
 
           {discountPercent > 0 && frequency && (
             <div className="flex justify-between items-center text-sm">
-              <span className="text-[#6ba4b8] font-medium">
+              <span className="text-[#3fae74] font-medium">
                 {Math.round(discountPercent * 100)}% Off Applied
               </span>
-              <span className="text-[#6ba4b8] font-semibold">-${discountAmount}</span>
+              <span className="text-[#3fae74] font-semibold">-${discountAmount}</span>
             </div>
           )}
 
@@ -69,7 +69,7 @@ export function OrderSummary({ form }: { form: UseFormReturn<FreeQuoteFormValues
             <span className="text-sm font-bold text-slate-900">
               {frequency && frequency.key !== 'oneTime' ? 'Total per visit' : 'Estimated total'}
             </span>
-            <span className="text-xl font-extrabold text-[#6ba4b8]">from ${total}</span>
+            <span className="text-xl font-extrabold text-[#3fae74]">from ${total}</span>
           </div>
 
           <PriceDisclaimer />
