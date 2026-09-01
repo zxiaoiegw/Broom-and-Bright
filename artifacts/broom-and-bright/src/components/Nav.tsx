@@ -34,7 +34,7 @@ export function Nav() {
       style={PLEX}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-sm shadow-sm py-3"
+          ? "bg-[#e3f2fb]/95 backdrop-blur-sm shadow-sm py-3"
           : "bg-transparent py-5"
       }`}
     >

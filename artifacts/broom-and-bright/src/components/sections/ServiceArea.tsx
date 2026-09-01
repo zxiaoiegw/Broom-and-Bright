@@ -103,7 +103,7 @@ export function ServiceArea() {
                 {SERVICE_AREA_CITIES.map(({ city, state }) => (
                   <div key={`${city}-${state}`} className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm">
-                      <MapPin className="w-4 h-4 text-[#3fae74]" />
+                      <MapPin className="w-4 h-4 text-[#2f7fb8]" />
                     </div>
                     <span className="text-slate-700 font-medium">
                       {city}, {state}

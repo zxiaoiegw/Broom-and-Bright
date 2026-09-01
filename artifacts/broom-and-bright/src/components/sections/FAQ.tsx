@@ -58,7 +58,7 @@ export function FAQ() {
               <summary className="flex items-center justify-between p-6 text-lg font-semibold text-slate-900 cursor-pointer list-none hover:bg-slate-100/50 transition-colors">
                 {faq.q}
                 <span className="flex-shrink-0 ml-4 w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 group-open:-rotate-45 transition-transform duration-300">
-                  <Plus className="w-5 h-5 text-primary" />
+                  <Plus className="w-5 h-5 text-[#2f7fb8]" />
                 </span>
               </summary>
               <div className="p-6 pt-0 text-slate-600 leading-relaxed bg-white border-t border-slate-100">

@@ -75,8 +75,8 @@ export function HowItWorks() {
                 key={index}
                 className={`flex flex-col items-center text-center ${LG_OFFSET[index]}`}
               >
-                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-linear-to-br from-[#54b6e6] to-[#2f7fb8] shadow-lg shadow-[#3fa0c7]/25 ring-8 ring-[#3fa0c7]/10">
-                  <step.icon className="h-8 w-8 text-white" />
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-br from-[#54b6e6] to-[#2f7fb8] shadow-lg shadow-[#3fa0c7]/25 ring-[6px] ring-[#3fa0c7]/10">
+                  <step.icon className="h-6 w-6 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">{step.title}</h3>
                 <p className="text-sm text-slate-600 leading-relaxed max-w-60">
