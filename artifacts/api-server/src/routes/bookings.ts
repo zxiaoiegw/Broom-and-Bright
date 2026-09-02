@@ -7,6 +7,7 @@ import { db, bookingsTable, availabilityRulesTable, availabilityOverridesTable }
 import { requireStaffAuth } from "../lib/auth";
 import { isStaffAvailable, getLocalDateString } from "../lib/slots";
 import { loadStaffAvailabilityForDate } from "../lib/staffAvailability";
+import { sendCustomerBookingConfirmation } from "../lib/bookingEmails";
 
 const router: IRouter = Router();
 const upload = multer({ storage: multer.memoryStorage() });
@@ -168,6 +169,27 @@ async function loadBookingForCustomer(id: number, customerEmail: string) {
   if (booking.customerEmail.toLowerCase() !== customerEmail.trim().toLowerCase()) return null;
   return booking;
 }
+
+// Read-only lookup for the "manage your booking" page, linked from the
+// confirmation email. Unlike loadBookingForCustomer this still returns a
+// cancelled booking (so the page can say so) — it only gates on the email
+// matching, not on status.
+router.get("/bookings/:id", async (req, res) => {
+  const id = Number(req.params.id);
+  const email = typeof req.query.email === "string" ? req.query.email : "";
+  if (!Number.isInteger(id) || !email) {
+    res.status(400).json({ error: "Missing booking id or email." });
+    return;
+  }
+
+  const [booking] = await db.select().from(bookingsTable).where(eq(bookingsTable.id, id)).limit(1);
+  if (!booking || booking.customerEmail.toLowerCase() !== email.trim().toLowerCase()) {
+    res.status(404).json({ error: "Booking not found." });
+    return;
+  }
+
+  res.json({ booking });
+});
 
 const publicRescheduleSchema = z.object({
   customerEmail: z.string().trim().email(),
@@ -331,8 +353,8 @@ router.post("/bookings", upload.array("photos"), async (req, res) => {
     // owner is also the assigned staff (e.g. a solo operation).
     const recipients = [...new Set([process.env.QUOTE_NOTIFICATION_EMAIL!, assigned.staff.email])];
 
-    await resend.emails.send({
-      from: "TrueClean KC Website <onboarding@resend.dev>",
+    const { error } = await resend.emails.send({
+      from: "TrueClean KC Website <bookings@mail.truecleankc.com>",
       to: recipients,
       subject: `New booking: ${customerName} — ${startDate.toLocaleString("en-US", { timeZone: "America/Chicago" })}`,
       html: `<p><strong>Customer:</strong> ${customerName} (${customerEmail}, ${customerPhone})</p>
@@ -349,8 +371,16 @@ router.post("/bookings", upload.array("photos"), async (req, res) => {
              <p><strong>Notes:</strong> ${notes ?? ""}</p>`,
       attachments: files.map((file) => ({ filename: file.originalname, content: file.buffer })),
     });
-  } catch {
+    if (error) throw error;
+  } catch (err) {
     // Booking is already saved — don't fail the request over a notification email.
+    console.error("Internal booking notification email failed:", err);
+  }
+
+  try {
+    await sendCustomerBookingConfirmation(booking);
+  } catch (err) {
+    console.error("Customer confirmation email failed:", err);
   }
 
   res.status(201).json({ booking });
