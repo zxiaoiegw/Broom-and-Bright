@@ -17,14 +17,18 @@ function formatWhen(start: Date, end: Date): string {
   return `${date}, ${start.toLocaleTimeString("en-US", opts)} – ${end.toLocaleTimeString("en-US", opts)}`;
 }
 
+function manageBookingUrl(booking: Booking): string {
+  const base = process.env.SITE_URL ?? "https://www.truecleankc.com";
+  return `${base}/booking/${booking.id}?email=${encodeURIComponent(booking.customerEmail)}`;
+}
+
 /**
  * Customer-facing "your booking is confirmed" email, sent after a booking is
  * created. Throws on send failure — callers should catch it themselves so a
  * flaky email provider never fails the booking that's already saved.
  */
 export async function sendCustomerBookingConfirmation(booking: Booking): Promise<void> {
-  const base = process.env.SITE_URL ?? "https://truecleankc.com";
-  const manageUrl = `${base}/booking/${booking.id}?email=${encodeURIComponent(booking.customerEmail)}`;
+  const manageUrl = manageBookingUrl(booking);
 
   const { error } = await resend.emails.send({
     from: "TrueClean KC <bookings@mail.truecleankc.com>",
@@ -39,6 +43,31 @@ export async function sendCustomerBookingConfirmation(booking: Booking): Promise
            ${booking.notes ? `<p><strong>Your notes:</strong> ${booking.notes}</p>` : ""}
            <p>Need to reschedule or cancel? <a href="${manageUrl}">Manage your booking</a>.</p>
            <p>Questions? Just reply to this email.</p>`,
+  });
+
+  if (error) throw error;
+}
+
+/**
+ * "Your cleaning is tomorrow" reminder, sent by the reminder cron for
+ * bookings starting within the next day. Throws on send failure — the cron
+ * only marks a booking as reminded after this resolves, so a failed send is
+ * naturally retried on the next run instead of being silently lost.
+ */
+export async function sendCustomerBookingReminder(booking: Booking): Promise<void> {
+  const manageUrl = manageBookingUrl(booking);
+
+  const { error } = await resend.emails.send({
+    from: "TrueClean KC <bookings@mail.truecleankc.com>",
+    to: booking.customerEmail,
+    replyTo: process.env.QUOTE_NOTIFICATION_EMAIL,
+    subject: `Reminder: ${SERVICE_LABELS[booking.serviceType]} tomorrow`,
+    html: `<h2>Hi ${booking.customerName}, just a reminder!</h2>
+           <p>Your ${SERVICE_LABELS[booking.serviceType]} is coming up:</p>
+           <p><strong>When:</strong> ${formatWhen(booking.startAt, booking.endAt)}</p>
+           <p><strong>Address:</strong> ${booking.address}</p>
+           <p>Need to reschedule or cancel? <a href="${manageUrl}">Manage your booking</a>.</p>
+           <p>See you soon!</p>`,
   });
 
   if (error) throw error;
