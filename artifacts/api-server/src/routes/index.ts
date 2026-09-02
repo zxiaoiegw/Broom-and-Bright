@@ -7,6 +7,7 @@ import staffRouter from "./staff";
 import availabilityRouter from "./availability";
 import bookingsRouter from "./bookings";
 import calendarFeedRouter from "./calendar-feed";
+import cronRouter from "./cron";
 
 const router: IRouter = Router();
 
@@ -25,5 +26,7 @@ router.use(availabilityRouter);
 router.use(bookingsRouter);
 
 router.use(calendarFeedRouter);
+
+router.use(cronRouter);
 
 export default router;

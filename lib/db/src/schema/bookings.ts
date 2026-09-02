@@ -38,6 +38,9 @@ export const bookingsTable = pgTable("bookings", {
   startAt: timestamp("start_at", { withTimezone: true }).notNull(),
   endAt: timestamp("end_at", { withTimezone: true }).notNull(),
   status: bookingStatusEnum("status").notNull().default("confirmed"),
+  // Set once the day-before reminder email goes out — null means "not sent
+  // yet", so the reminder cron can safely re-run without double-emailing.
+  reminderSentAt: timestamp("reminder_sent_at", { withTimezone: true }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
