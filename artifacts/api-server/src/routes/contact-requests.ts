@@ -22,7 +22,7 @@ router.post("/contact-requests", async (req, res) => {
 
   try {
     const { error } = await resend.emails.send({
-      from: "TrueClean KC Website <onboarding@resend.dev>",
+      from: "TrueClean KC Website <bookings@mail.truecleankc.com>",
       to: process.env.QUOTE_NOTIFICATION_EMAIL!,
       replyTo: String(email),
       subject: `Contact form: ${name}${service ? ` – ${service}` : ""}`,
