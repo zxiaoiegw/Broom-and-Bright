@@ -94,12 +94,11 @@ function Hero() {
             Careers · Kansas City metro
           </p>
           <h1 className="text-4xl md:text-5xl font-bold leading-[1.08] text-slate-900">
-            Get paid to make homes feel brand new.
+Come clean with us.
           </h1>
           <p className="mt-5 text-lg text-slate-600">
-            We're the cleaning service that earns a spare key — and that only works
-            when our cleaners are treated as well as our clients. Flexible hours you
-            help set, weekly pay, and the same neighborhoods every week.
+            We're looking for some new blood to join the crew. Flexible hours you
+            help set, competitive pay, and a friendly, supportive team.
           </p>
           <div className="mt-8 flex flex-wrap gap-3.5">
             <a
