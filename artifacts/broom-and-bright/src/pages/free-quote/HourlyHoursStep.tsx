@@ -10,8 +10,8 @@ import {
 import { MAX_HOURLY_HOURS } from './pricing';
 import type { HourlyQuoteFormValues } from './schema';
 
-const PHONE_DISPLAY = '(785) 829-1574';
-const PHONE_HREF = 'tel:+17858291574';
+const PHONE_DISPLAY = '(913) 226-6847';
+const PHONE_HREF = 'tel:+19132266847';
 
 const HOUR_OPTIONS = Array.from({ length: MAX_HOURLY_HOURS }, (_, i) => i + 1);
 

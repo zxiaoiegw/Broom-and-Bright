@@ -51,11 +51,11 @@ export function Hero() {
               </Link>
 
               <a
-                href="tel:+17858291574"
+                href="tel:+19132266847"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-[#3fae74] bg-white/40 px-6 py-3.5 text-base font-semibold text-[#2f8f5f] transition-all hover:-translate-y-0.5 hover:bg-[#3fae74]/10"
               >
                 <Phone className="h-4 w-4" />
-                (785) 829-1574
+                (913) 226-6847
               </a>
             </div>
 

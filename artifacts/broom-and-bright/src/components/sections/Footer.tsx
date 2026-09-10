@@ -78,7 +78,7 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-            <span>Fully licensed, insured, and bonded. License #TC89241</span>
+            <span>Fully licensed, insured, and bonded.</span>
           </div>
         </div>
       </div>

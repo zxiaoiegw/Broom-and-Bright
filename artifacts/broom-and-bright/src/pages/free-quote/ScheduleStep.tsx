@@ -159,7 +159,7 @@ export function ScheduleStep({ durationMinutes, value, onChange, heading }: Sche
           ) : slots.length === 0 ? (
             <p className="text-sm text-slate-500">
               No openings that day — please pick another date, or{' '}
-              <a href="tel:+17858291574" className="font-semibold text-[#3fae74] underline underline-offset-2">
+              <a href="tel:+19132266847" className="font-semibold text-[#3fae74] underline underline-offset-2">
                 call us
               </a>{' '}
               for help finding a time.

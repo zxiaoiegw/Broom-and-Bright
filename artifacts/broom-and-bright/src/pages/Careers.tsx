@@ -127,13 +127,9 @@ function Benefits() {
     <section className="bg-white py-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-xl mb-11">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
             Why cleaners stay with us
           </h2>
-          <p className="text-lg text-slate-600">
-            Most of our team has been here more than two years. Here's the setup
-            that keeps them.
-          </p>
         </div>
 
         <div
@@ -164,13 +160,9 @@ function OpenRoles() {
     <section id="roles" className="bg-[#eaf4fb] py-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-xl mb-11">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
             Open roles
           </h2>
-          <p className="text-lg text-slate-600">
-            All positions are W-2 employment in the Kansas City metro. We're hiring
-            on a rolling basis.
-          </p>
         </div>
 
         <div
@@ -210,13 +202,9 @@ function HiringSteps() {
     <section className="bg-white py-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-xl mb-11">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
             How hiring works
           </h2>
-          <p className="text-lg text-slate-600">
-            About a week from application to first shift. Every step gets a real
-            answer, even if it's a no.
-          </p>
         </div>
 
         <div ref={ref} className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -348,7 +336,7 @@ function ApplicationForm() {
               <p>
                 <strong className="text-white">Phone:</strong>
                 <br />
-                (785) 829-1574
+                (913) 226-6847
               </p>
             </div>
           </div>

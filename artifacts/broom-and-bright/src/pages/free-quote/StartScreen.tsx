@@ -1,8 +1,8 @@
 import { Home as HomeIcon, Clock, Phone, ChevronRight } from 'lucide-react';
 import { HOURLY_RATE } from './pricing';
 
-const PHONE_DISPLAY = '(785) 829-1574';
-const PHONE_HREF = 'tel:+17858291574';
+const PHONE_DISPLAY = '(913) 226-6847';
+const PHONE_HREF = 'tel:+19132266847';
 
 export function StartScreen({ onSelect }: { onSelect: (mode: 'standard' | 'hourly') => void }) {
   return (
