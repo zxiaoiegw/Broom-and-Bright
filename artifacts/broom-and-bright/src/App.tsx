@@ -6,6 +6,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import Home from '@/pages/Home';
 import FreeQuote from '@/pages/FreeQuote';
+import Careers from '@/pages/Careers';
 import ManageBooking from '@/pages/ManageBooking';
 import StaffLogin from '@/pages/staff/StaffLogin';
 import StaffDashboard from '@/pages/staff/StaffDashboard';
@@ -26,6 +27,7 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/free-quote" component={FreeQuote} />
+        <Route path="/careers" component={Careers} />
         <Route path="/booking/:id" component={ManageBooking} />
         <Route path="/staff/login" component={StaffLogin} />
         <Route path="/staff/dashboard" component={StaffDashboard} />

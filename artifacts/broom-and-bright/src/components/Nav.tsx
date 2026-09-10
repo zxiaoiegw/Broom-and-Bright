@@ -56,6 +56,12 @@ export function Nav() {
                   {label}
                 </a>
               ))}
+              <Link
+                href="/careers"
+                className="text-[0.92rem] font-medium text-[#22343f]/80 hover:text-[#22343f] transition-colors"
+              >
+                Careers
+              </Link>
             </div>
             <Link
               href="/free-quote"
@@ -95,6 +101,13 @@ export function Nav() {
               {label}
             </a>
           ))}
+          <Link
+            href="/careers"
+            className="text-base font-medium text-slate-700 py-2 border-b border-slate-50"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Careers
+          </Link>
           <Link
             href="/free-quote"
             onClick={() => setIsMobileMenuOpen(false)}

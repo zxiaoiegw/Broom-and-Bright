@@ -39,6 +39,14 @@ export function getLocalDateString(instant: Date, timeZone: string = BUSINESS_TI
   );
 }
 
+// Pure calendar-string arithmetic (no timezone conversion involved) — adds
+// `days` to a "YYYY-MM-DD" string.
+export function addDays(dateStr: string, days: number): string {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  const next = new Date(Date.UTC(y, m - 1, d + days));
+  return `${next.getUTCFullYear()}-${String(next.getUTCMonth() + 1).padStart(2, "0")}-${String(next.getUTCDate()).padStart(2, "0")}`;
+}
+
 export function timeStringToMinutes(time: string): number {
   const [h, m] = time.split(":").map(Number);
   return h * 60 + (m ?? 0);

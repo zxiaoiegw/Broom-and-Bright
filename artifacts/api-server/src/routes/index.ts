@@ -2,6 +2,7 @@ import { Router, type IRouter } from "express";
 import healthRouter from "./health";
 import quoteRequestRouter from "./quote-requests";
 import contactRequestRouter from "./contact-requests";
+import careersApplicationRouter from "./careers-applications";
 import staffAuthRouter from "./staff-auth";
 import staffRouter from "./staff";
 import availabilityRouter from "./availability";
@@ -16,6 +17,8 @@ router.use(healthRouter);
 router.use(quoteRequestRouter);
 
 router.use(contactRequestRouter);
+
+router.use(careersApplicationRouter);
 
 router.use(staffAuthRouter);
 

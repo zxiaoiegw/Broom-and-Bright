@@ -5,9 +5,9 @@ import { eq, and, ne } from "drizzle-orm";
 import { Resend } from "resend";
 import { db, bookingsTable, availabilityRulesTable, availabilityOverridesTable } from "@workspace/db";
 import { requireStaffAuth } from "../lib/auth";
-import { isStaffAvailable, getLocalDateString } from "../lib/slots";
+import { isStaffAvailable, getLocalDateString, addDays } from "../lib/slots";
 import { loadStaffAvailabilityForDate } from "../lib/staffAvailability";
-import { sendCustomerBookingConfirmation } from "../lib/bookingEmails";
+import { sendCustomerBookingConfirmation, sendCustomerBookingReminder } from "../lib/bookingEmails";
 
 const router: IRouter = Router();
 const upload = multer({ storage: multer.memoryStorage() });
@@ -381,6 +381,22 @@ router.post("/bookings", upload.array("photos"), async (req, res) => {
     await sendCustomerBookingConfirmation(booking);
   } catch (err) {
     console.error("Customer confirmation email failed:", err);
+  }
+
+  // The day-before reminder cron only runs once daily — a booking made for
+  // tomorrow after today's run has already happened would otherwise never
+  // get reminded (it's "today" by the time tomorrow's run checks for
+  // "tomorrow"). Catch that here by sending the reminder immediately when
+  // the appointment is already tomorrow's calendar date at booking time; the
+  // cron's reminderSentAt check keeps it from double-sending later.
+  try {
+    const tomorrow = addDays(getLocalDateString(new Date()), 1);
+    if (getLocalDateString(booking.startAt) === tomorrow) {
+      await sendCustomerBookingReminder(booking);
+      await db.update(bookingsTable).set({ reminderSentAt: new Date() }).where(eq(bookingsTable.id, booking.id));
+    }
+  } catch (err) {
+    console.error("Immediate booking reminder email failed:", err);
   }
 
   res.status(201).json({ booking });

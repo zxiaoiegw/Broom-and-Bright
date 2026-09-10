@@ -2,7 +2,7 @@ import { Router, type IRouter } from "express";
 import { and, eq, gte, lt, isNull } from "drizzle-orm";
 import { db, bookingsTable } from "@workspace/db";
 import { sendCustomerBookingReminder } from "../lib/bookingEmails";
-import { getLocalDateString, zonedTimeToUtc, BUSINESS_TIMEZONE } from "../lib/slots";
+import { getLocalDateString, zonedTimeToUtc, addDays, BUSINESS_TIMEZONE } from "../lib/slots";
 
 const router: IRouter = Router();
 
@@ -11,14 +11,6 @@ const router: IRouter = Router();
 function isAuthorizedCronRequest(authHeader: string | undefined): boolean {
   const secret = process.env.CRON_SECRET;
   return Boolean(secret) && authHeader === `Bearer ${secret}`;
-}
-
-// Pure calendar-string arithmetic (no timezone conversion involved) — adds
-// `days` to a "YYYY-MM-DD" string.
-function addDays(dateStr: string, days: number): string {
-  const [y, m, d] = dateStr.split("-").map(Number);
-  const next = new Date(Date.UTC(y, m - 1, d + days));
-  return `${next.getUTCFullYear()}-${String(next.getUTCMonth() + 1).padStart(2, "0")}-${String(next.getUTCDate()).padStart(2, "0")}`;
 }
 
 /**
